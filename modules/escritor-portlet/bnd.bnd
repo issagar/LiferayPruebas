@@ -1,0 +1,4 @@
+Bundle-Name: escritor-portlet
+Bundle-SymbolicName: escritor.portlet
+Bundle-Version: 1.0.0
+Export-Package: escritor.portlet.constants

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="coche.crud.sb.model.Coche">
+		<field name="uuid" type="String" />
+		<field name="CocheId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="marca" type="String" />
+		<field name="modelo" type="String" />
+		<field name="precio" type="Double" />
+	</model>
+</model-hints>

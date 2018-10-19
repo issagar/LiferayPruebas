@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean class="coche.crud.sb.service.impl.CocheLocalServiceImpl" id="coche.crud.sb.service.CocheLocalService" />
+	<bean class="coche.crud.sb.service.impl.CocheServiceImpl" id="coche.crud.sb.service.CocheService" />
+	<bean class="coche.crud.sb.service.persistence.impl.CochePersistenceImpl" id="coche.crud.sb.service.persistence.CochePersistence" parent="basePersistence" />
+</beans>

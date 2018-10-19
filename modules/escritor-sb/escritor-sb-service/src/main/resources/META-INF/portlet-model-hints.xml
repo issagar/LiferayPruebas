@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="escritorSb.model.Escritor">
+		<field name="uuid" type="String" />
+		<field name="escritorId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="nombre" type="String" />
+	</model>
+	<model name="escritorSb.model.Libro">
+		<field name="uuid" type="String" />
+		<field name="libroId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="titulo" type="String" />
+		<field name="publicacion" type="Date" />
+		<field name="genero" type="String" />
+		<field name="escritores" type="Date" />
+	</model>
+</model-hints>

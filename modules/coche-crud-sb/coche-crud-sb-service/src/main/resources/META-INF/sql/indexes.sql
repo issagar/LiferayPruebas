@@ -1,0 +1,1 @@
+create index IX_70E670EE on Coches_Coche (uuid_[$COLUMN_LENGTH:75$], companyId);

@@ -1,0 +1,9 @@
+Bundle-Name: coche-crud-sb-api
+Bundle-SymbolicName: coche.crud.sb.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	coche.crud.sb.exception,\
+	coche.crud.sb.model,\
+	coche.crud.sb.service,\
+	coche.crud.sb.service.persistence
+-includeresource: META-INF/service.xml=../coche-crud-sb-service/service.xml

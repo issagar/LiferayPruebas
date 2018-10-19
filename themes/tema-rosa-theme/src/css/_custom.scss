@@ -1,0 +1,22 @@
+/* These inject tags are used for dynamically creating imports for themelet styles, you can place them where ever you like in this file. */
+
+/* inject:imports */
+/* endinject */
+
+/* AQUI VA TODO EL CSS DEL TEMA!! */
+
+
+
+a:hover{
+	color:blue;
+	
+}
+
+span.obfuscatedLink{
+	cursor:pointer;
+}
+
+span.obfuscatedLink.hover{
+	text-transform:underline;
+	color: #007bff;
+}

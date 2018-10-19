@@ -1,0 +1,9 @@
+Bundle-Name: escritor-sb-api
+Bundle-SymbolicName: escritorSb.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	escritorSb.exception,\
+	escritorSb.model,\
+	escritorSb.service,\
+	escritorSb.service.persistence
+-includeresource: META-INF/service.xml=../escritor-sb-service/service.xml

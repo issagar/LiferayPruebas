@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean class="escritorSb.service.impl.EscritorLocalServiceImpl" id="escritorSb.service.EscritorLocalService" />
+	<bean class="escritorSb.service.persistence.impl.EscritorPersistenceImpl" id="escritorSb.service.persistence.EscritorPersistence" parent="basePersistence" />
+	<bean class="escritorSb.service.impl.LibroLocalServiceImpl" id="escritorSb.service.LibroLocalService" />
+	<bean class="escritorSb.service.impl.LibroServiceImpl" id="escritorSb.service.LibroService" />
+	<bean class="escritorSb.service.persistence.impl.LibroPersistenceImpl" id="escritorSb.service.persistence.LibroPersistence" parent="basePersistence" />
+</beans>

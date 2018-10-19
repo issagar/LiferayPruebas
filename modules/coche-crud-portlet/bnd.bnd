@@ -1,0 +1,4 @@
+Bundle-Name: coche-crud-portlet
+Bundle-SymbolicName: coche.crud.portlet
+Bundle-Version: 1.0.0
+Export-Package: coche.crud.portlet.constants
