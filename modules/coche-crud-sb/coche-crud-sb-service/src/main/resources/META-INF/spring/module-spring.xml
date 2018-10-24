@@ -4,4 +4,7 @@
 	<bean class="coche.crud.sb.service.impl.CocheLocalServiceImpl" id="coche.crud.sb.service.CocheLocalService" />
 	<bean class="coche.crud.sb.service.impl.CocheServiceImpl" id="coche.crud.sb.service.CocheService" />
 	<bean class="coche.crud.sb.service.persistence.impl.CochePersistenceImpl" id="coche.crud.sb.service.persistence.CochePersistence" parent="basePersistence" />
+	<bean class="coche.crud.sb.service.impl.ConductorLocalServiceImpl" id="coche.crud.sb.service.ConductorLocalService" />
+	<bean class="coche.crud.sb.service.impl.ConductorServiceImpl" id="coche.crud.sb.service.ConductorService" />
+	<bean class="coche.crud.sb.service.persistence.impl.ConductorPersistenceImpl" id="coche.crud.sb.service.persistence.ConductorPersistence" parent="basePersistence" />
 </beans>

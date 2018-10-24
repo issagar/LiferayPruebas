@@ -35,4 +35,42 @@
 		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
 		<reference entity="AssetTag" package-path="com.liferay.portlet.asset" />
 	</entity>
+	
+	<entity local-service="true" name="Conductor" remote-service="true" uuid="true">
+
+		<!-- PK fields -->
+
+		<column name="conductorId" primary="true" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+
+		<column name="nombre" type="String" />
+		<column name="apellido" type="String" />
+		<column name="dni" type="String" />
+		<column name="cocheId" type="Long" />
+		
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="apellido" />
+		</order>
+		
+		<finder return-type="Conductor" name="byDni">
+			<finder-column name="dni"/>
+		</finder>
+
+		<!-- References -->
+
+		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetTag" package-path="com.liferay.portlet.asset" />
+	</entity>
 </service-builder>

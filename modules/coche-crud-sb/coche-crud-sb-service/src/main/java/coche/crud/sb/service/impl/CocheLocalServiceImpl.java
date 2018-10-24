@@ -66,6 +66,9 @@ public class CocheLocalServiceImpl extends CocheLocalServiceBaseImpl {
 		
 		
 	}
+	
+	
+	
 
 
 	@Override

@@ -3,6 +3,7 @@
 
 <hibernate-mapping auto-import="false" default-lazy="false">
 	<import class="coche.crud.sb.model.Coche" />
+	<import class="coche.crud.sb.model.Conductor" />
 	<class name="coche.crud.sb.model.impl.CocheImpl" table="Coches_Coche">
 		<id name="CocheId" type="long">
 			<generator class="assigned" />
@@ -16,5 +17,20 @@
 		<property name="marca" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="modelo" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="precio" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+	</class>
+	<class name="coche.crud.sb.model.impl.ConductorImpl" table="Coches_Conductor">
+		<id name="conductorId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property column="uuid_" name="uuid" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="apellido" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="dni" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="cocheId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 	</class>
 </hibernate-mapping>
