@@ -117,10 +117,11 @@ public class ConductorModelImpl extends BaseModelImpl<Conductor>
 	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(coche.crud.sb.service.util.ServiceProps.get(
 				"value.object.column.bitmask.enabled.coche.crud.sb.model.Conductor"),
 			true);
-	public static final long COMPANYID_COLUMN_BITMASK = 1L;
-	public static final long DNI_COLUMN_BITMASK = 2L;
-	public static final long UUID_COLUMN_BITMASK = 4L;
-	public static final long APELLIDO_COLUMN_BITMASK = 8L;
+	public static final long COCHEID_COLUMN_BITMASK = 1L;
+	public static final long COMPANYID_COLUMN_BITMASK = 2L;
+	public static final long DNI_COLUMN_BITMASK = 4L;
+	public static final long UUID_COLUMN_BITMASK = 8L;
+	public static final long APELLIDO_COLUMN_BITMASK = 16L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -488,13 +489,25 @@ public class ConductorModelImpl extends BaseModelImpl<Conductor>
 
 	@JSON
 	@Override
-	public Long getCocheId() {
+	public long getCocheId() {
 		return _cocheId;
 	}
 
 	@Override
-	public void setCocheId(Long cocheId) {
+	public void setCocheId(long cocheId) {
+		_columnBitmask |= COCHEID_COLUMN_BITMASK;
+
+		if (!_setOriginalCocheId) {
+			_setOriginalCocheId = true;
+
+			_originalCocheId = _cocheId;
+		}
+
 		_cocheId = cocheId;
+	}
+
+	public long getOriginalCocheId() {
+		return _originalCocheId;
 	}
 
 	@Override
@@ -614,6 +627,10 @@ public class ConductorModelImpl extends BaseModelImpl<Conductor>
 		conductorModelImpl._setModifiedDate = false;
 
 		conductorModelImpl._originalDni = conductorModelImpl._dni;
+
+		conductorModelImpl._originalCocheId = conductorModelImpl._cocheId;
+
+		conductorModelImpl._setOriginalCocheId = false;
 
 		conductorModelImpl._columnBitmask = 0;
 	}
@@ -799,7 +816,9 @@ public class ConductorModelImpl extends BaseModelImpl<Conductor>
 	private String _apellido;
 	private String _dni;
 	private String _originalDni;
-	private Long _cocheId;
+	private long _cocheId;
+	private long _originalCocheId;
+	private boolean _setOriginalCocheId;
 	private long _columnBitmask;
 	private Conductor _escapedModel;
 }

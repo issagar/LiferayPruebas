@@ -193,16 +193,6 @@ public class ConductorWrapper implements Conductor, ModelWrapper<Conductor> {
 		return _conductor.getPrimaryKeyObj();
 	}
 
-	/**
-	* Returns the coche ID of this conductor.
-	*
-	* @return the coche ID of this conductor
-	*/
-	@Override
-	public java.lang.Long getCocheId() {
-		return _conductor.getCocheId();
-	}
-
 	@Override
 	public java.lang.Object clone() {
 		return new ConductorWrapper((Conductor)_conductor.clone());
@@ -299,6 +289,16 @@ public class ConductorWrapper implements Conductor, ModelWrapper<Conductor> {
 	}
 
 	/**
+	* Returns the coche ID of this conductor.
+	*
+	* @return the coche ID of this conductor
+	*/
+	@Override
+	public long getCocheId() {
+		return _conductor.getCocheId();
+	}
+
+	/**
 	* Returns the company ID of this conductor.
 	*
 	* @return the company ID of this conductor
@@ -364,7 +364,7 @@ public class ConductorWrapper implements Conductor, ModelWrapper<Conductor> {
 	* @param cocheId the coche ID of this conductor
 	*/
 	@Override
-	public void setCocheId(java.lang.Long cocheId) {
+	public void setCocheId(long cocheId) {
 		_conductor.setCocheId(cocheId);
 	}
 

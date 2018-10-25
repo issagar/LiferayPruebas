@@ -16,6 +16,7 @@ package coche.crud.sb.service;
 
 import aQute.bnd.annotation.ProviderType;
 
+import coche.crud.sb.exception.NoSuchConductorException;
 import coche.crud.sb.model.Conductor;
 
 import com.liferay.exportimport.kernel.lar.PortletDataContext;
@@ -102,6 +103,9 @@ public interface ConductorLocalService extends BaseLocalService,
 		throws PortalException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public Conductor fetchByDni(java.lang.String dni);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Conductor fetchConductor(long conductorId);
 
 	/**
@@ -114,6 +118,9 @@ public interface ConductorLocalService extends BaseLocalService,
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Conductor fetchConductorByUuidAndCompanyId(java.lang.String uuid,
 		long companyId);
+
+	public Conductor findByDni(java.lang.String dni)
+		throws NoSuchConductorException;
 
 	/**
 	* Returns the conductor with the primary key.
@@ -223,6 +230,8 @@ public interface ConductorLocalService extends BaseLocalService,
 	*/
 	public <T> List<T> dynamicQuery(DynamicQuery dynamicQuery, int start,
 		int end, OrderByComparator<T> orderByComparator);
+
+	public List<Conductor> findByCocheId(long CocheId);
 
 	/**
 	* Returns a range of all the conductors.

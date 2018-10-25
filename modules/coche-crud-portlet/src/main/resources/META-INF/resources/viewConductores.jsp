@@ -30,7 +30,8 @@ OrderByComparator comparator= OrderByComparatorFactoryUtil.create("Conductor", o
 	ConductorLocalService conductorLocalService = (ConductorLocalService)renderRequest.getAttribute("conductorLocalService");
 	List<Conductor> coches = conductorLocalService.getConductors(searchContainer.getStart(), searchContainer.getEnd());
 	searchContainer.setResults(coches);
-	searchContainer.setTotal(coches.size());
+	searchContainer.setTotal(conductorLocalService.getConductorsCount());
+	CocheLocalService cochesLocalService = (CocheLocalService)renderRequest.getAttribute("cocheLocalService");
 	
 	%>
 	</liferay-ui-search-container-results>
@@ -39,7 +40,16 @@ OrderByComparator comparator= OrderByComparatorFactoryUtil.create("Conductor", o
 		<liferay-ui:search-container-column-text name="Nombre" value="<%=conductor.getNombre()%>"/>
 		<liferay-ui:search-container-column-text name="Apellido" property="apellido"/>
 		<liferay-ui:search-container-column-text name="Dni" property="dni"/>
-		<liferay-ui:search-container-column-text name="Vehiculo" property="cocheId"/>		
+		<%
+		Coche coche = cochesLocalService.fetchCoche(conductor.getCocheId());
+		String cocheMarca="";
+		if (coche != null) {
+			cocheMarca = coche.getMarca();
+		}
+		
+		
+		%>
+		<liferay-ui:search-container-column-text name="Vehiculo" value="<%=cocheMarca %>"/>		
 		<liferay-ui:search-container-column-text name="actions">
 			<liferay-ui:icon-menu>
 				<liferay-portlet:renderURL var="editConductorURL">

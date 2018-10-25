@@ -324,7 +324,7 @@ public interface ConductorPersistence extends BasePersistence<Conductor> {
 	* @return the matching conductor
 	* @throws NoSuchConductorException if a matching conductor could not be found
 	*/
-	public Conductor findBybyDni(java.lang.String dni)
+	public Conductor findByDni(java.lang.String dni)
 		throws NoSuchConductorException;
 
 	/**
@@ -333,7 +333,7 @@ public interface ConductorPersistence extends BasePersistence<Conductor> {
 	* @param dni the dni
 	* @return the matching conductor, or <code>null</code> if a matching conductor could not be found
 	*/
-	public Conductor fetchBybyDni(java.lang.String dni);
+	public Conductor fetchByDni(java.lang.String dni);
 
 	/**
 	* Returns the conductor where dni = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
@@ -342,8 +342,7 @@ public interface ConductorPersistence extends BasePersistence<Conductor> {
 	* @param retrieveFromCache whether to retrieve from the finder cache
 	* @return the matching conductor, or <code>null</code> if a matching conductor could not be found
 	*/
-	public Conductor fetchBybyDni(java.lang.String dni,
-		boolean retrieveFromCache);
+	public Conductor fetchByDni(java.lang.String dni, boolean retrieveFromCache);
 
 	/**
 	* Removes the conductor where dni = &#63; from the database.
@@ -351,7 +350,7 @@ public interface ConductorPersistence extends BasePersistence<Conductor> {
 	* @param dni the dni
 	* @return the conductor that was removed
 	*/
-	public Conductor removeBybyDni(java.lang.String dni)
+	public Conductor removeByDni(java.lang.String dni)
 		throws NoSuchConductorException;
 
 	/**
@@ -360,7 +359,139 @@ public interface ConductorPersistence extends BasePersistence<Conductor> {
 	* @param dni the dni
 	* @return the number of matching conductors
 	*/
-	public int countBybyDni(java.lang.String dni);
+	public int countByDni(java.lang.String dni);
+
+	/**
+	* Returns all the conductors where cocheId = &#63;.
+	*
+	* @param cocheId the coche ID
+	* @return the matching conductors
+	*/
+	public java.util.List<Conductor> findByCocheId(long cocheId);
+
+	/**
+	* Returns a range of all the conductors where cocheId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link ConductorModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param cocheId the coche ID
+	* @param start the lower bound of the range of conductors
+	* @param end the upper bound of the range of conductors (not inclusive)
+	* @return the range of matching conductors
+	*/
+	public java.util.List<Conductor> findByCocheId(long cocheId, int start,
+		int end);
+
+	/**
+	* Returns an ordered range of all the conductors where cocheId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link ConductorModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param cocheId the coche ID
+	* @param start the lower bound of the range of conductors
+	* @param end the upper bound of the range of conductors (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching conductors
+	*/
+	public java.util.List<Conductor> findByCocheId(long cocheId, int start,
+		int end,
+		com.liferay.portal.kernel.util.OrderByComparator<Conductor> orderByComparator);
+
+	/**
+	* Returns an ordered range of all the conductors where cocheId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link ConductorModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param cocheId the coche ID
+	* @param start the lower bound of the range of conductors
+	* @param end the upper bound of the range of conductors (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @param retrieveFromCache whether to retrieve from the finder cache
+	* @return the ordered range of matching conductors
+	*/
+	public java.util.List<Conductor> findByCocheId(long cocheId, int start,
+		int end,
+		com.liferay.portal.kernel.util.OrderByComparator<Conductor> orderByComparator,
+		boolean retrieveFromCache);
+
+	/**
+	* Returns the first conductor in the ordered set where cocheId = &#63;.
+	*
+	* @param cocheId the coche ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching conductor
+	* @throws NoSuchConductorException if a matching conductor could not be found
+	*/
+	public Conductor findByCocheId_First(long cocheId,
+		com.liferay.portal.kernel.util.OrderByComparator<Conductor> orderByComparator)
+		throws NoSuchConductorException;
+
+	/**
+	* Returns the first conductor in the ordered set where cocheId = &#63;.
+	*
+	* @param cocheId the coche ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching conductor, or <code>null</code> if a matching conductor could not be found
+	*/
+	public Conductor fetchByCocheId_First(long cocheId,
+		com.liferay.portal.kernel.util.OrderByComparator<Conductor> orderByComparator);
+
+	/**
+	* Returns the last conductor in the ordered set where cocheId = &#63;.
+	*
+	* @param cocheId the coche ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching conductor
+	* @throws NoSuchConductorException if a matching conductor could not be found
+	*/
+	public Conductor findByCocheId_Last(long cocheId,
+		com.liferay.portal.kernel.util.OrderByComparator<Conductor> orderByComparator)
+		throws NoSuchConductorException;
+
+	/**
+	* Returns the last conductor in the ordered set where cocheId = &#63;.
+	*
+	* @param cocheId the coche ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching conductor, or <code>null</code> if a matching conductor could not be found
+	*/
+	public Conductor fetchByCocheId_Last(long cocheId,
+		com.liferay.portal.kernel.util.OrderByComparator<Conductor> orderByComparator);
+
+	/**
+	* Returns the conductors before and after the current conductor in the ordered set where cocheId = &#63;.
+	*
+	* @param conductorId the primary key of the current conductor
+	* @param cocheId the coche ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next conductor
+	* @throws NoSuchConductorException if a conductor with the primary key could not be found
+	*/
+	public Conductor[] findByCocheId_PrevAndNext(long conductorId,
+		long cocheId,
+		com.liferay.portal.kernel.util.OrderByComparator<Conductor> orderByComparator)
+		throws NoSuchConductorException;
+
+	/**
+	* Removes all the conductors where cocheId = &#63; from the database.
+	*
+	* @param cocheId the coche ID
+	*/
+	public void removeByCocheId(long cocheId);
+
+	/**
+	* Returns the number of conductors where cocheId = &#63;.
+	*
+	* @param cocheId the coche ID
+	* @return the number of matching conductors
+	*/
+	public int countByCocheId(long cocheId);
 
 	/**
 	* Caches the conductor in the entity cache if it is enabled.

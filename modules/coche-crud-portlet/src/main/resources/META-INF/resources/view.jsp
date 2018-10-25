@@ -47,7 +47,7 @@ OrderByComparator comparator= OrderByComparatorFactoryUtil.create("Coche", order
 	CocheLocalService cochesLocalService = (CocheLocalService)renderRequest.getAttribute("cocheLocalService");
 	List<Coche> coches = cochesLocalService.getCoches(searchContainer.getStart(), searchContainer.getEnd());
 	searchContainer.setResults(coches);
-	searchContainer.setTotal(coches.size());
+	searchContainer.setTotal(cochesLocalService.getCochesCount());
 	%>
 	</liferay-ui-search-container-results>
 

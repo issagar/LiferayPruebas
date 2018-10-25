@@ -8,10 +8,13 @@ import com.liferay.portal.kernel.log.LogFactory;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.PortletResponseUtil;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.liferay.portal.kernel.servlet.SessionErrors;
+import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.CharPool;
 import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
@@ -84,6 +87,7 @@ public class CocheCrudPortlet extends MVCPortlet {
 			String marca= ParamUtil.getString(actionRequest, "marca");
 			String modelo = ParamUtil.getString(actionRequest, "modelo");
 			Double precio = ParamUtil.getDouble(actionRequest, "precio");
+			
 			_cocheLocalService.addCoche(theme.getCompanyId(), theme.getUserId(), theme.getDoAsUserId(), marca, modelo,precio);
 		}
     
@@ -123,10 +127,21 @@ public class CocheCrudPortlet extends MVCPortlet {
 			String apellido = ParamUtil.getString(actionRequest, "apellido");
 			String dni = ParamUtil.getString(actionRequest, "dni");
 			Long idCoche= ParamUtil.getLong(actionRequest, "cocheSelect");
-	
-					_conductorLocalService.addConductor(theme.getCompanyId(), theme.getUserId(), theme.getDoAsUserId(), nombre, apellido, dni, idCoche);
+			
+			Conductor conductor = _conductorLocalService.fetchByDni(dni);
+				
+			
+			if(conductor==null && validar(dni)==false){
+				_conductorLocalService.addConductor(theme.getCompanyId(), theme.getUserId(), theme.getDoAsUserId(), nombre, apellido, dni, idCoche);
+				actionResponse.setRenderParameter("mvcPath", "/viewConductores.jsp");
+			}else{
+				SessionErrors.add(actionRequest, "dni-exist");
+				SessionMessages.add(actionRequest, PortalUtil.getPortletId(actionRequest) + SessionMessages.KEY_SUFFIX_HIDE_DEFAULT_ERROR_MESSAGE);
+				actionResponse.setRenderParameter("mvcPath", "/addConductor.jsp");
 				
 			}
+
+		}
 
 		
 		@ProcessAction(name="deleteConductor")
@@ -137,6 +152,7 @@ public class CocheCrudPortlet extends MVCPortlet {
 			Conductor conductor= _conductorLocalService.createConductor(conductorId);
 			
 			_conductorLocalService.deleteConductor(conductor);
+			actionResponse.setRenderParameter("mvcPath", "/viewConductores.jsp");
 		}
 		
 		@ProcessAction(name="editConductor")
@@ -273,6 +289,37 @@ public class CocheCrudPortlet extends MVCPortlet {
 			sb.append(CharPool.QUOTE);
 			return sb.toString();
 		}
+		
+		public static boolean validar(String dni) {
+			 
+	        boolean esValido = false;
+	        int i = 0;
+	        int caracterASCII = 0;
+	        char letra = ' ';
+	        int miDNI = 0;
+	        int resto = 0;
+	        char[] asignacionLetra = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X','B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};
+	 
+	 
+	        if(dni.length() == 9 && Character.isLetter(dni.charAt(8))) {
+	 
+	            do {
+	                caracterASCII = dni.codePointAt(i);
+	                esValido = (caracterASCII > 47 && caracterASCII < 58);
+	                i++;
+	            } 
+	            while(i < dni.length() - 1 && esValido);     
+	        }
+	 
+	        if(esValido) {
+	            letra = Character.toUpperCase(dni.charAt(8));
+	            miDNI = Integer.parseInt(dni.substring(0,8));
+	            resto = miDNI % 23;
+	            esValido = (letra == asignacionLetra[resto]);
+	        }
+	 
+	        return esValido;
+	    }
 		
 }
 			

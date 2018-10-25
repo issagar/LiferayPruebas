@@ -228,14 +228,14 @@ public interface CocheModel extends BaseModel<Coche>, ShardedModel,
 	 *
 	 * @return the precio of this coche
 	 */
-	public Double getPrecio();
+	public double getPrecio();
 
 	/**
 	 * Sets the precio of this coche.
 	 *
 	 * @param precio the precio of this coche
 	 */
-	public void setPrecio(Double precio);
+	public void setPrecio(double precio);
 
 	@Override
 	public boolean isNew();

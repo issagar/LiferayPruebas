@@ -88,6 +88,10 @@ public class ConductorLocalServiceUtil {
 		return getService().deleteConductor(conductorId);
 	}
 
+	public static coche.crud.sb.model.Conductor fetchByDni(java.lang.String dni) {
+		return getService().fetchByDni(dni);
+	}
+
 	public static coche.crud.sb.model.Conductor fetchConductor(long conductorId) {
 		return getService().fetchConductor(conductorId);
 	}
@@ -102,6 +106,11 @@ public class ConductorLocalServiceUtil {
 	public static coche.crud.sb.model.Conductor fetchConductorByUuidAndCompanyId(
 		java.lang.String uuid, long companyId) {
 		return getService().fetchConductorByUuidAndCompanyId(uuid, companyId);
+	}
+
+	public static coche.crud.sb.model.Conductor findByDni(java.lang.String dni)
+		throws coche.crud.sb.exception.NoSuchConductorException {
+		return getService().findByDni(dni);
 	}
 
 	/**
@@ -239,6 +248,11 @@ public class ConductorLocalServiceUtil {
 		com.liferay.portal.kernel.util.OrderByComparator<T> orderByComparator) {
 		return getService()
 				   .dynamicQuery(dynamicQuery, start, end, orderByComparator);
+	}
+
+	public static java.util.List<coche.crud.sb.model.Conductor> findByCocheId(
+		long CocheId) {
+		return getService().findByCocheId(CocheId);
 	}
 
 	/**

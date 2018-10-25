@@ -177,11 +177,11 @@ public class ConductorSoap implements Serializable {
 		_dni = dni;
 	}
 
-	public Long getCocheId() {
+	public long getCocheId() {
 		return _cocheId;
 	}
 
-	public void setCocheId(Long cocheId) {
+	public void setCocheId(long cocheId) {
 		_cocheId = cocheId;
 	}
 
@@ -195,5 +195,5 @@ public class ConductorSoap implements Serializable {
 	private String _nombre;
 	private String _apellido;
 	private String _dni;
-	private Long _cocheId;
+	private long _cocheId;
 }

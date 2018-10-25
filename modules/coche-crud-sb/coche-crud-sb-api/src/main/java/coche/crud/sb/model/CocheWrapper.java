@@ -171,6 +171,16 @@ public class CocheWrapper implements Coche, ModelWrapper<Coche> {
 		return _coche.toCacheModel();
 	}
 
+	/**
+	* Returns the precio of this coche.
+	*
+	* @return the precio of this coche
+	*/
+	@Override
+	public double getPrecio() {
+		return _coche.getPrecio();
+	}
+
 	@Override
 	public int compareTo(coche.crud.sb.model.Coche coche) {
 		return _coche.compareTo(coche);
@@ -184,16 +194,6 @@ public class CocheWrapper implements Coche, ModelWrapper<Coche> {
 	@Override
 	public Serializable getPrimaryKeyObj() {
 		return _coche.getPrimaryKeyObj();
-	}
-
-	/**
-	* Returns the precio of this coche.
-	*
-	* @return the precio of this coche
-	*/
-	@Override
-	public java.lang.Double getPrecio() {
-		return _coche.getPrecio();
 	}
 
 	@Override
@@ -418,7 +418,7 @@ public class CocheWrapper implements Coche, ModelWrapper<Coche> {
 	* @param precio the precio of this coche
 	*/
 	@Override
-	public void setPrecio(java.lang.Double precio) {
+	public void setPrecio(double precio) {
 		_coche.setPrecio(precio);
 	}
 

@@ -243,14 +243,14 @@ public interface ConductorModel extends BaseModel<Conductor>, ShardedModel,
 	 *
 	 * @return the coche ID of this conductor
 	 */
-	public Long getCocheId();
+	public long getCocheId();
 
 	/**
 	 * Sets the coche ID of this conductor.
 	 *
 	 * @param cocheId the coche ID of this conductor
 	 */
-	public void setCocheId(Long cocheId);
+	public void setCocheId(long cocheId);
 
 	@Override
 	public boolean isNew();

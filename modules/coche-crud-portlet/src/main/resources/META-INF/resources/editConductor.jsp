@@ -15,18 +15,21 @@
 	if(conductor!=null){
 		CocheLocalService cochesLocalService = (CocheLocalService)renderRequest.getAttribute("cocheLocalService");
 		List<Coche> listadoCoches = cochesLocalService.getCoches(-1, -1);
+		Coche cocheEditar = cochesLocalService.fetchCoche(conductor.getCocheId());
 	
 %>
 	<liferay-portlet:actionURL name="editConductor" var="editConductorURL">
 		<liferay-portlet:param name="conductorId" value="<%=String.valueOf(conductorId) %>"/>
 	</liferay-portlet:actionURL>
-	<aui:form action="${editCocheURL}" method="post" name="fm">
+	<aui:form action="${editConductorURL}" method="post" name="fm">
 
 		<aui:input type="text" name="nombre" label="nombre" value="<%=conductor.getNombre() %>" localized="false">
 			<aui:validator name="maxLength">50</aui:validator>
+			<aui:validator name="required"></aui:validator>
 		</aui:input>
 		<aui:input type="text" name="apellido"  label="apellido" value="<%=conductor.getApellido() %>" localized="true">
 			<aui:validator name="maxLength">50</aui:validator>
+			<aui:validator name="required"></aui:validator>
 		</aui:input>
 		
 		<aui:select name="cocheSelect" id="cocheSelect" label="CocheId">

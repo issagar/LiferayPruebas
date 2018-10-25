@@ -447,9 +447,9 @@ public class ConductorUtil {
 	* @return the matching conductor
 	* @throws NoSuchConductorException if a matching conductor could not be found
 	*/
-	public static Conductor findBybyDni(java.lang.String dni)
+	public static Conductor findByDni(java.lang.String dni)
 		throws coche.crud.sb.exception.NoSuchConductorException {
-		return getPersistence().findBybyDni(dni);
+		return getPersistence().findByDni(dni);
 	}
 
 	/**
@@ -458,8 +458,8 @@ public class ConductorUtil {
 	* @param dni the dni
 	* @return the matching conductor, or <code>null</code> if a matching conductor could not be found
 	*/
-	public static Conductor fetchBybyDni(java.lang.String dni) {
-		return getPersistence().fetchBybyDni(dni);
+	public static Conductor fetchByDni(java.lang.String dni) {
+		return getPersistence().fetchByDni(dni);
 	}
 
 	/**
@@ -469,9 +469,9 @@ public class ConductorUtil {
 	* @param retrieveFromCache whether to retrieve from the finder cache
 	* @return the matching conductor, or <code>null</code> if a matching conductor could not be found
 	*/
-	public static Conductor fetchBybyDni(java.lang.String dni,
+	public static Conductor fetchByDni(java.lang.String dni,
 		boolean retrieveFromCache) {
-		return getPersistence().fetchBybyDni(dni, retrieveFromCache);
+		return getPersistence().fetchByDni(dni, retrieveFromCache);
 	}
 
 	/**
@@ -480,9 +480,9 @@ public class ConductorUtil {
 	* @param dni the dni
 	* @return the conductor that was removed
 	*/
-	public static Conductor removeBybyDni(java.lang.String dni)
+	public static Conductor removeByDni(java.lang.String dni)
 		throws coche.crud.sb.exception.NoSuchConductorException {
-		return getPersistence().removeBybyDni(dni);
+		return getPersistence().removeByDni(dni);
 	}
 
 	/**
@@ -491,8 +491,163 @@ public class ConductorUtil {
 	* @param dni the dni
 	* @return the number of matching conductors
 	*/
-	public static int countBybyDni(java.lang.String dni) {
-		return getPersistence().countBybyDni(dni);
+	public static int countByDni(java.lang.String dni) {
+		return getPersistence().countByDni(dni);
+	}
+
+	/**
+	* Returns all the conductors where cocheId = &#63;.
+	*
+	* @param cocheId the coche ID
+	* @return the matching conductors
+	*/
+	public static List<Conductor> findByCocheId(long cocheId) {
+		return getPersistence().findByCocheId(cocheId);
+	}
+
+	/**
+	* Returns a range of all the conductors where cocheId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link ConductorModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param cocheId the coche ID
+	* @param start the lower bound of the range of conductors
+	* @param end the upper bound of the range of conductors (not inclusive)
+	* @return the range of matching conductors
+	*/
+	public static List<Conductor> findByCocheId(long cocheId, int start, int end) {
+		return getPersistence().findByCocheId(cocheId, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the conductors where cocheId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link ConductorModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param cocheId the coche ID
+	* @param start the lower bound of the range of conductors
+	* @param end the upper bound of the range of conductors (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching conductors
+	*/
+	public static List<Conductor> findByCocheId(long cocheId, int start,
+		int end, OrderByComparator<Conductor> orderByComparator) {
+		return getPersistence()
+				   .findByCocheId(cocheId, start, end, orderByComparator);
+	}
+
+	/**
+	* Returns an ordered range of all the conductors where cocheId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link ConductorModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param cocheId the coche ID
+	* @param start the lower bound of the range of conductors
+	* @param end the upper bound of the range of conductors (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @param retrieveFromCache whether to retrieve from the finder cache
+	* @return the ordered range of matching conductors
+	*/
+	public static List<Conductor> findByCocheId(long cocheId, int start,
+		int end, OrderByComparator<Conductor> orderByComparator,
+		boolean retrieveFromCache) {
+		return getPersistence()
+				   .findByCocheId(cocheId, start, end, orderByComparator,
+			retrieveFromCache);
+	}
+
+	/**
+	* Returns the first conductor in the ordered set where cocheId = &#63;.
+	*
+	* @param cocheId the coche ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching conductor
+	* @throws NoSuchConductorException if a matching conductor could not be found
+	*/
+	public static Conductor findByCocheId_First(long cocheId,
+		OrderByComparator<Conductor> orderByComparator)
+		throws coche.crud.sb.exception.NoSuchConductorException {
+		return getPersistence().findByCocheId_First(cocheId, orderByComparator);
+	}
+
+	/**
+	* Returns the first conductor in the ordered set where cocheId = &#63;.
+	*
+	* @param cocheId the coche ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching conductor, or <code>null</code> if a matching conductor could not be found
+	*/
+	public static Conductor fetchByCocheId_First(long cocheId,
+		OrderByComparator<Conductor> orderByComparator) {
+		return getPersistence().fetchByCocheId_First(cocheId, orderByComparator);
+	}
+
+	/**
+	* Returns the last conductor in the ordered set where cocheId = &#63;.
+	*
+	* @param cocheId the coche ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching conductor
+	* @throws NoSuchConductorException if a matching conductor could not be found
+	*/
+	public static Conductor findByCocheId_Last(long cocheId,
+		OrderByComparator<Conductor> orderByComparator)
+		throws coche.crud.sb.exception.NoSuchConductorException {
+		return getPersistence().findByCocheId_Last(cocheId, orderByComparator);
+	}
+
+	/**
+	* Returns the last conductor in the ordered set where cocheId = &#63;.
+	*
+	* @param cocheId the coche ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching conductor, or <code>null</code> if a matching conductor could not be found
+	*/
+	public static Conductor fetchByCocheId_Last(long cocheId,
+		OrderByComparator<Conductor> orderByComparator) {
+		return getPersistence().fetchByCocheId_Last(cocheId, orderByComparator);
+	}
+
+	/**
+	* Returns the conductors before and after the current conductor in the ordered set where cocheId = &#63;.
+	*
+	* @param conductorId the primary key of the current conductor
+	* @param cocheId the coche ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next conductor
+	* @throws NoSuchConductorException if a conductor with the primary key could not be found
+	*/
+	public static Conductor[] findByCocheId_PrevAndNext(long conductorId,
+		long cocheId, OrderByComparator<Conductor> orderByComparator)
+		throws coche.crud.sb.exception.NoSuchConductorException {
+		return getPersistence()
+				   .findByCocheId_PrevAndNext(conductorId, cocheId,
+			orderByComparator);
+	}
+
+	/**
+	* Removes all the conductors where cocheId = &#63; from the database.
+	*
+	* @param cocheId the coche ID
+	*/
+	public static void removeByCocheId(long cocheId) {
+		getPersistence().removeByCocheId(cocheId);
+	}
+
+	/**
+	* Returns the number of conductors where cocheId = &#63;.
+	*
+	* @param cocheId the coche ID
+	* @return the number of matching conductors
+	*/
+	public static int countByCocheId(long cocheId) {
+		return getPersistence().countByCocheId(cocheId);
 	}
 
 	/**

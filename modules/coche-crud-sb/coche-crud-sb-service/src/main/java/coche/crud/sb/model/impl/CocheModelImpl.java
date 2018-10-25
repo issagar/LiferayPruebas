@@ -450,12 +450,12 @@ public class CocheModelImpl extends BaseModelImpl<Coche> implements CocheModel {
 
 	@JSON
 	@Override
-	public Double getPrecio() {
+	public double getPrecio() {
 		return _precio;
 	}
 
 	@Override
-	public void setPrecio(Double precio) {
+	public void setPrecio(double precio) {
 		_precio = precio;
 	}
 
@@ -742,7 +742,7 @@ public class CocheModelImpl extends BaseModelImpl<Coche> implements CocheModel {
 	private boolean _setModifiedDate;
 	private String _marca;
 	private String _modelo;
-	private Double _precio;
+	private double _precio;
 	private long _columnBitmask;
 	private Coche _escapedModel;
 }

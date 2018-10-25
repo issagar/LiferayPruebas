@@ -82,6 +82,11 @@ public class ConductorLocalServiceWrapper implements ConductorLocalService,
 	}
 
 	@Override
+	public coche.crud.sb.model.Conductor fetchByDni(java.lang.String dni) {
+		return _conductorLocalService.fetchByDni(dni);
+	}
+
+	@Override
 	public coche.crud.sb.model.Conductor fetchConductor(long conductorId) {
 		return _conductorLocalService.fetchConductor(conductorId);
 	}
@@ -98,6 +103,12 @@ public class ConductorLocalServiceWrapper implements ConductorLocalService,
 		java.lang.String uuid, long companyId) {
 		return _conductorLocalService.fetchConductorByUuidAndCompanyId(uuid,
 			companyId);
+	}
+
+	@Override
+	public coche.crud.sb.model.Conductor findByDni(java.lang.String dni)
+		throws coche.crud.sb.exception.NoSuchConductorException {
+		return _conductorLocalService.findByDni(dni);
 	}
 
 	/**
@@ -250,6 +261,12 @@ public class ConductorLocalServiceWrapper implements ConductorLocalService,
 		com.liferay.portal.kernel.util.OrderByComparator<T> orderByComparator) {
 		return _conductorLocalService.dynamicQuery(dynamicQuery, start, end,
 			orderByComparator);
+	}
+
+	@Override
+	public java.util.List<coche.crud.sb.model.Conductor> findByCocheId(
+		long CocheId) {
+		return _conductorLocalService.findByCocheId(CocheId);
 	}
 
 	/**

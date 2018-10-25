@@ -11,7 +11,7 @@
 		<field name="modifiedDate" type="Date" />
 		<field name="marca" type="String" />
 		<field name="modelo" type="String" />
-		<field name="precio" type="Double" />
+		<field name="precio" type="double" />
 	</model>
 	<model name="coche.crud.sb.model.Conductor">
 		<field name="uuid" type="String" />
@@ -24,6 +24,6 @@
 		<field name="nombre" type="String" />
 		<field name="apellido" type="String" />
 		<field name="dni" type="String" />
-		<field name="cocheId" type="Long" />
+		<field name="cocheId" type="long" />
 	</model>
 </model-hints>

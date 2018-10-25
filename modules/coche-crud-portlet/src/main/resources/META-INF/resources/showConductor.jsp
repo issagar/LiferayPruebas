@@ -1,3 +1,5 @@
+<%@page import="coche.crud.sb.model.Coche"%>
+<%@page import="coche.crud.sb.service.CocheLocalService"%>
 <%@page import="java.util.List"%>
 <%@page import="com.liferay.portal.kernel.dao.search.DisplayTerms"%>
 <%@page import="com.liferay.portal.kernel.util.OrderByComparatorFactoryUtil"%>
@@ -10,7 +12,14 @@
 
 <h2><liferay-ui:message key="cochecrud.caption"/></h2>
 
-
+<%
+CocheLocalService cochesLocalService = (CocheLocalService)renderRequest.getAttribute("cocheLocalService");
+long cocheId = ParamUtil.getLong(request,"CocheId", 0);
+Coche coche = null;
+if(cocheId>0){
+	coche = cochesLocalService.fetchCoche(cocheId);
+}
+%>
 
 <% 
 String orderByCol = ParamUtil.getString(request, "orderByCol", "apellido");
@@ -26,13 +35,14 @@ OrderByComparator comparator= OrderByComparatorFactoryUtil.create("Conductor", o
 	<liferay-ui-search-container-results>
 	<%
 	ConductorLocalService conductorLocalService = (ConductorLocalService)renderRequest.getAttribute("conductorLocalService");
-	List<Conductor> coches = conductorLocalService.getConductors(searchContainer.getStart(), searchContainer.getEnd());
-	searchContainer.setResults(coches);
-	searchContainer.setTotal(coches.size());
+	List <Conductor> listaConductores= conductorLocalService.findByCocheId(cocheId);
+	searchContainer.setResults(listaConductores);
+	searchContainer.setTotal(listaConductores.size());
 	%>
 	</liferay-ui-search-container-results>
 
 	<liferay-ui:search-container-row className="coche.crud.sb.model.Conductor" keyProperty ="conductorId" modelVar="conductor" >
+	
 		<liferay-ui:search-container-column-text name="Nombre" value="<%=conductor.getNombre()%>"/>
 		<liferay-ui:search-container-column-text name="Apellido" property="apellido"/>
 		<liferay-ui:search-container-column-text name="Dni" property="dni"/>		

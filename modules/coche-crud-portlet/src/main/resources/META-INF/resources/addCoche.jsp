@@ -16,12 +16,15 @@
 		<aui:form action="${addCocheURL}" method="post" name="fm">
 		<aui:input type="text" name="marca" label="marca" value="" localized="false">
 			<aui:validator name="maxLength">50</aui:validator>
+			<aui:validator name="required"></aui:validator>
 		</aui:input>
 		<aui:input type="text" name="modelo"  label="modelo" localized="true">
 			<aui:validator name="maxLength">50</aui:validator>
+			<aui:validator name="required"></aui:validator>
 		</aui:input>
 		<aui:input type="number" name="precio" label="precio">
 			<aui:validator name="digits"></aui:validator>
+			<aui:validator name="required"></aui:validator>
 		</aui:input>
 		<aui:button-row>
 			<aui:button name="submit" type="submit" value="save" />

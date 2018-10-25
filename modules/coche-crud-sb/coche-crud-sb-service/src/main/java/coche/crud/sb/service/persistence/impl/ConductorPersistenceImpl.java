@@ -1224,14 +1224,14 @@ public class ConductorPersistenceImpl extends BasePersistenceImpl<Conductor>
 	private static final String _FINDER_COLUMN_UUID_C_UUID_2 = "conductor.uuid = ? AND ";
 	private static final String _FINDER_COLUMN_UUID_C_UUID_3 = "(conductor.uuid IS NULL OR conductor.uuid = '') AND ";
 	private static final String _FINDER_COLUMN_UUID_C_COMPANYID_2 = "conductor.companyId = ?";
-	public static final FinderPath FINDER_PATH_FETCH_BY_BYDNI = new FinderPath(ConductorModelImpl.ENTITY_CACHE_ENABLED,
+	public static final FinderPath FINDER_PATH_FETCH_BY_DNI = new FinderPath(ConductorModelImpl.ENTITY_CACHE_ENABLED,
 			ConductorModelImpl.FINDER_CACHE_ENABLED, ConductorImpl.class,
-			FINDER_CLASS_NAME_ENTITY, "fetchBybyDni",
+			FINDER_CLASS_NAME_ENTITY, "fetchByDni",
 			new String[] { String.class.getName() },
 			ConductorModelImpl.DNI_COLUMN_BITMASK);
-	public static final FinderPath FINDER_PATH_COUNT_BY_BYDNI = new FinderPath(ConductorModelImpl.ENTITY_CACHE_ENABLED,
+	public static final FinderPath FINDER_PATH_COUNT_BY_DNI = new FinderPath(ConductorModelImpl.ENTITY_CACHE_ENABLED,
 			ConductorModelImpl.FINDER_CACHE_ENABLED, Long.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countBybyDni",
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByDni",
 			new String[] { String.class.getName() });
 
 	/**
@@ -1242,8 +1242,8 @@ public class ConductorPersistenceImpl extends BasePersistenceImpl<Conductor>
 	 * @throws NoSuchConductorException if a matching conductor could not be found
 	 */
 	@Override
-	public Conductor findBybyDni(String dni) throws NoSuchConductorException {
-		Conductor conductor = fetchBybyDni(dni);
+	public Conductor findByDni(String dni) throws NoSuchConductorException {
+		Conductor conductor = fetchByDni(dni);
 
 		if (conductor == null) {
 			StringBundler msg = new StringBundler(4);
@@ -1272,8 +1272,8 @@ public class ConductorPersistenceImpl extends BasePersistenceImpl<Conductor>
 	 * @return the matching conductor, or <code>null</code> if a matching conductor could not be found
 	 */
 	@Override
-	public Conductor fetchBybyDni(String dni) {
-		return fetchBybyDni(dni, true);
+	public Conductor fetchByDni(String dni) {
+		return fetchByDni(dni, true);
 	}
 
 	/**
@@ -1284,13 +1284,13 @@ public class ConductorPersistenceImpl extends BasePersistenceImpl<Conductor>
 	 * @return the matching conductor, or <code>null</code> if a matching conductor could not be found
 	 */
 	@Override
-	public Conductor fetchBybyDni(String dni, boolean retrieveFromCache) {
+	public Conductor fetchByDni(String dni, boolean retrieveFromCache) {
 		Object[] finderArgs = new Object[] { dni };
 
 		Object result = null;
 
 		if (retrieveFromCache) {
-			result = finderCache.getResult(FINDER_PATH_FETCH_BY_BYDNI,
+			result = finderCache.getResult(FINDER_PATH_FETCH_BY_DNI,
 					finderArgs, this);
 		}
 
@@ -1310,15 +1310,15 @@ public class ConductorPersistenceImpl extends BasePersistenceImpl<Conductor>
 			boolean bindDni = false;
 
 			if (dni == null) {
-				query.append(_FINDER_COLUMN_BYDNI_DNI_1);
+				query.append(_FINDER_COLUMN_DNI_DNI_1);
 			}
 			else if (dni.equals(StringPool.BLANK)) {
-				query.append(_FINDER_COLUMN_BYDNI_DNI_3);
+				query.append(_FINDER_COLUMN_DNI_DNI_3);
 			}
 			else {
 				bindDni = true;
 
-				query.append(_FINDER_COLUMN_BYDNI_DNI_2);
+				query.append(_FINDER_COLUMN_DNI_DNI_2);
 			}
 
 			String sql = query.toString();
@@ -1339,8 +1339,8 @@ public class ConductorPersistenceImpl extends BasePersistenceImpl<Conductor>
 				List<Conductor> list = q.list();
 
 				if (list.isEmpty()) {
-					finderCache.putResult(FINDER_PATH_FETCH_BY_BYDNI,
-						finderArgs, list);
+					finderCache.putResult(FINDER_PATH_FETCH_BY_DNI, finderArgs,
+						list);
 				}
 				else {
 					if (list.size() > 1) {
@@ -1348,7 +1348,7 @@ public class ConductorPersistenceImpl extends BasePersistenceImpl<Conductor>
 
 						if (_log.isWarnEnabled()) {
 							_log.warn(
-								"ConductorPersistenceImpl.fetchBybyDni(String, boolean) with parameters (" +
+								"ConductorPersistenceImpl.fetchByDni(String, boolean) with parameters (" +
 								StringUtil.merge(finderArgs) +
 								") yields a result set with more than 1 result. This violates the logical unique restriction. There is no order guarantee on which result is returned by this finder.");
 						}
@@ -1362,13 +1362,13 @@ public class ConductorPersistenceImpl extends BasePersistenceImpl<Conductor>
 
 					if ((conductor.getDni() == null) ||
 							!conductor.getDni().equals(dni)) {
-						finderCache.putResult(FINDER_PATH_FETCH_BY_BYDNI,
+						finderCache.putResult(FINDER_PATH_FETCH_BY_DNI,
 							finderArgs, conductor);
 					}
 				}
 			}
 			catch (Exception e) {
-				finderCache.removeResult(FINDER_PATH_FETCH_BY_BYDNI, finderArgs);
+				finderCache.removeResult(FINDER_PATH_FETCH_BY_DNI, finderArgs);
 
 				throw processException(e);
 			}
@@ -1392,8 +1392,8 @@ public class ConductorPersistenceImpl extends BasePersistenceImpl<Conductor>
 	 * @return the conductor that was removed
 	 */
 	@Override
-	public Conductor removeBybyDni(String dni) throws NoSuchConductorException {
-		Conductor conductor = findBybyDni(dni);
+	public Conductor removeByDni(String dni) throws NoSuchConductorException {
+		Conductor conductor = findByDni(dni);
 
 		return remove(conductor);
 	}
@@ -1405,8 +1405,8 @@ public class ConductorPersistenceImpl extends BasePersistenceImpl<Conductor>
 	 * @return the number of matching conductors
 	 */
 	@Override
-	public int countBybyDni(String dni) {
-		FinderPath finderPath = FINDER_PATH_COUNT_BY_BYDNI;
+	public int countByDni(String dni) {
+		FinderPath finderPath = FINDER_PATH_COUNT_BY_DNI;
 
 		Object[] finderArgs = new Object[] { dni };
 
@@ -1420,15 +1420,15 @@ public class ConductorPersistenceImpl extends BasePersistenceImpl<Conductor>
 			boolean bindDni = false;
 
 			if (dni == null) {
-				query.append(_FINDER_COLUMN_BYDNI_DNI_1);
+				query.append(_FINDER_COLUMN_DNI_DNI_1);
 			}
 			else if (dni.equals(StringPool.BLANK)) {
-				query.append(_FINDER_COLUMN_BYDNI_DNI_3);
+				query.append(_FINDER_COLUMN_DNI_DNI_3);
 			}
 			else {
 				bindDni = true;
 
-				query.append(_FINDER_COLUMN_BYDNI_DNI_2);
+				query.append(_FINDER_COLUMN_DNI_DNI_2);
 			}
 
 			String sql = query.toString();
@@ -1463,9 +1463,510 @@ public class ConductorPersistenceImpl extends BasePersistenceImpl<Conductor>
 		return count.intValue();
 	}
 
-	private static final String _FINDER_COLUMN_BYDNI_DNI_1 = "conductor.dni IS NULL";
-	private static final String _FINDER_COLUMN_BYDNI_DNI_2 = "conductor.dni = ?";
-	private static final String _FINDER_COLUMN_BYDNI_DNI_3 = "(conductor.dni IS NULL OR conductor.dni = '')";
+	private static final String _FINDER_COLUMN_DNI_DNI_1 = "conductor.dni IS NULL";
+	private static final String _FINDER_COLUMN_DNI_DNI_2 = "conductor.dni = ?";
+	private static final String _FINDER_COLUMN_DNI_DNI_3 = "(conductor.dni IS NULL OR conductor.dni = '')";
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_COCHEID = new FinderPath(ConductorModelImpl.ENTITY_CACHE_ENABLED,
+			ConductorModelImpl.FINDER_CACHE_ENABLED, ConductorImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByCocheId",
+			new String[] {
+				Long.class.getName(),
+				
+			Integer.class.getName(), Integer.class.getName(),
+				OrderByComparator.class.getName()
+			});
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_COCHEID =
+		new FinderPath(ConductorModelImpl.ENTITY_CACHE_ENABLED,
+			ConductorModelImpl.FINDER_CACHE_ENABLED, ConductorImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByCocheId",
+			new String[] { Long.class.getName() },
+			ConductorModelImpl.COCHEID_COLUMN_BITMASK |
+			ConductorModelImpl.APELLIDO_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_COCHEID = new FinderPath(ConductorModelImpl.ENTITY_CACHE_ENABLED,
+			ConductorModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByCocheId",
+			new String[] { Long.class.getName() });
+
+	/**
+	 * Returns all the conductors where cocheId = &#63;.
+	 *
+	 * @param cocheId the coche ID
+	 * @return the matching conductors
+	 */
+	@Override
+	public List<Conductor> findByCocheId(long cocheId) {
+		return findByCocheId(cocheId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the conductors where cocheId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link ConductorModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param cocheId the coche ID
+	 * @param start the lower bound of the range of conductors
+	 * @param end the upper bound of the range of conductors (not inclusive)
+	 * @return the range of matching conductors
+	 */
+	@Override
+	public List<Conductor> findByCocheId(long cocheId, int start, int end) {
+		return findByCocheId(cocheId, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the conductors where cocheId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link ConductorModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param cocheId the coche ID
+	 * @param start the lower bound of the range of conductors
+	 * @param end the upper bound of the range of conductors (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching conductors
+	 */
+	@Override
+	public List<Conductor> findByCocheId(long cocheId, int start, int end,
+		OrderByComparator<Conductor> orderByComparator) {
+		return findByCocheId(cocheId, start, end, orderByComparator, true);
+	}
+
+	/**
+	 * Returns an ordered range of all the conductors where cocheId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link ConductorModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param cocheId the coche ID
+	 * @param start the lower bound of the range of conductors
+	 * @param end the upper bound of the range of conductors (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param retrieveFromCache whether to retrieve from the finder cache
+	 * @return the ordered range of matching conductors
+	 */
+	@Override
+	public List<Conductor> findByCocheId(long cocheId, int start, int end,
+		OrderByComparator<Conductor> orderByComparator,
+		boolean retrieveFromCache) {
+		boolean pagination = true;
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+				(orderByComparator == null)) {
+			pagination = false;
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_COCHEID;
+			finderArgs = new Object[] { cocheId };
+		}
+		else {
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_COCHEID;
+			finderArgs = new Object[] { cocheId, start, end, orderByComparator };
+		}
+
+		List<Conductor> list = null;
+
+		if (retrieveFromCache) {
+			list = (List<Conductor>)finderCache.getResult(finderPath,
+					finderArgs, this);
+
+			if ((list != null) && !list.isEmpty()) {
+				for (Conductor conductor : list) {
+					if ((cocheId != conductor.getCocheId())) {
+						list = null;
+
+						break;
+					}
+				}
+			}
+		}
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(3 +
+						(orderByComparator.getOrderByFields().length * 2));
+			}
+			else {
+				query = new StringBundler(3);
+			}
+
+			query.append(_SQL_SELECT_CONDUCTOR_WHERE);
+
+			query.append(_FINDER_COLUMN_COCHEID_COCHEID_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+			else
+			 if (pagination) {
+				query.append(ConductorModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(cocheId);
+
+				if (!pagination) {
+					list = (List<Conductor>)QueryUtil.list(q, getDialect(),
+							start, end, false);
+
+					Collections.sort(list);
+
+					list = Collections.unmodifiableList(list);
+				}
+				else {
+					list = (List<Conductor>)QueryUtil.list(q, getDialect(),
+							start, end);
+				}
+
+				cacheResult(list);
+
+				finderCache.putResult(finderPath, finderArgs, list);
+			}
+			catch (Exception e) {
+				finderCache.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first conductor in the ordered set where cocheId = &#63;.
+	 *
+	 * @param cocheId the coche ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching conductor
+	 * @throws NoSuchConductorException if a matching conductor could not be found
+	 */
+	@Override
+	public Conductor findByCocheId_First(long cocheId,
+		OrderByComparator<Conductor> orderByComparator)
+		throws NoSuchConductorException {
+		Conductor conductor = fetchByCocheId_First(cocheId, orderByComparator);
+
+		if (conductor != null) {
+			return conductor;
+		}
+
+		StringBundler msg = new StringBundler(4);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("cocheId=");
+		msg.append(cocheId);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchConductorException(msg.toString());
+	}
+
+	/**
+	 * Returns the first conductor in the ordered set where cocheId = &#63;.
+	 *
+	 * @param cocheId the coche ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching conductor, or <code>null</code> if a matching conductor could not be found
+	 */
+	@Override
+	public Conductor fetchByCocheId_First(long cocheId,
+		OrderByComparator<Conductor> orderByComparator) {
+		List<Conductor> list = findByCocheId(cocheId, 0, 1, orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the last conductor in the ordered set where cocheId = &#63;.
+	 *
+	 * @param cocheId the coche ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching conductor
+	 * @throws NoSuchConductorException if a matching conductor could not be found
+	 */
+	@Override
+	public Conductor findByCocheId_Last(long cocheId,
+		OrderByComparator<Conductor> orderByComparator)
+		throws NoSuchConductorException {
+		Conductor conductor = fetchByCocheId_Last(cocheId, orderByComparator);
+
+		if (conductor != null) {
+			return conductor;
+		}
+
+		StringBundler msg = new StringBundler(4);
+
+		msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+		msg.append("cocheId=");
+		msg.append(cocheId);
+
+		msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+		throw new NoSuchConductorException(msg.toString());
+	}
+
+	/**
+	 * Returns the last conductor in the ordered set where cocheId = &#63;.
+	 *
+	 * @param cocheId the coche ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching conductor, or <code>null</code> if a matching conductor could not be found
+	 */
+	@Override
+	public Conductor fetchByCocheId_Last(long cocheId,
+		OrderByComparator<Conductor> orderByComparator) {
+		int count = countByCocheId(cocheId);
+
+		if (count == 0) {
+			return null;
+		}
+
+		List<Conductor> list = findByCocheId(cocheId, count - 1, count,
+				orderByComparator);
+
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the conductors before and after the current conductor in the ordered set where cocheId = &#63;.
+	 *
+	 * @param conductorId the primary key of the current conductor
+	 * @param cocheId the coche ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next conductor
+	 * @throws NoSuchConductorException if a conductor with the primary key could not be found
+	 */
+	@Override
+	public Conductor[] findByCocheId_PrevAndNext(long conductorId,
+		long cocheId, OrderByComparator<Conductor> orderByComparator)
+		throws NoSuchConductorException {
+		Conductor conductor = findByPrimaryKey(conductorId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			Conductor[] array = new ConductorImpl[3];
+
+			array[0] = getByCocheId_PrevAndNext(session, conductor, cocheId,
+					orderByComparator, true);
+
+			array[1] = conductor;
+
+			array[2] = getByCocheId_PrevAndNext(session, conductor, cocheId,
+					orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected Conductor getByCocheId_PrevAndNext(Session session,
+		Conductor conductor, long cocheId,
+		OrderByComparator<Conductor> orderByComparator, boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(4 +
+					(orderByComparator.getOrderByConditionFields().length * 3) +
+					(orderByComparator.getOrderByFields().length * 3));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_CONDUCTOR_WHERE);
+
+		query.append(_FINDER_COLUMN_COCHEID_COCHEID_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+		else {
+			query.append(ConductorModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		qPos.add(cocheId);
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(conductor);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<Conductor> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Removes all the conductors where cocheId = &#63; from the database.
+	 *
+	 * @param cocheId the coche ID
+	 */
+	@Override
+	public void removeByCocheId(long cocheId) {
+		for (Conductor conductor : findByCocheId(cocheId, QueryUtil.ALL_POS,
+				QueryUtil.ALL_POS, null)) {
+			remove(conductor);
+		}
+	}
+
+	/**
+	 * Returns the number of conductors where cocheId = &#63;.
+	 *
+	 * @param cocheId the coche ID
+	 * @return the number of matching conductors
+	 */
+	@Override
+	public int countByCocheId(long cocheId) {
+		FinderPath finderPath = FINDER_PATH_COUNT_BY_COCHEID;
+
+		Object[] finderArgs = new Object[] { cocheId };
+
+		Long count = (Long)finderCache.getResult(finderPath, finderArgs, this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(2);
+
+			query.append(_SQL_COUNT_CONDUCTOR_WHERE);
+
+			query.append(_FINDER_COLUMN_COCHEID_COCHEID_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(cocheId);
+
+				count = (Long)q.uniqueResult();
+
+				finderCache.putResult(finderPath, finderArgs, count);
+			}
+			catch (Exception e) {
+				finderCache.removeResult(finderPath, finderArgs);
+
+				throw processException(e);
+			}
+			finally {
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	private static final String _FINDER_COLUMN_COCHEID_COCHEID_2 = "conductor.cocheId = ?";
 
 	public ConductorPersistenceImpl() {
 		setModelClass(Conductor.class);
@@ -1497,7 +1998,7 @@ public class ConductorPersistenceImpl extends BasePersistenceImpl<Conductor>
 		entityCache.putResult(ConductorModelImpl.ENTITY_CACHE_ENABLED,
 			ConductorImpl.class, conductor.getPrimaryKey(), conductor);
 
-		finderCache.putResult(FINDER_PATH_FETCH_BY_BYDNI,
+		finderCache.putResult(FINDER_PATH_FETCH_BY_DNI,
 			new Object[] { conductor.getDni() }, conductor);
 
 		conductor.resetOriginalValues();
@@ -1572,9 +2073,9 @@ public class ConductorPersistenceImpl extends BasePersistenceImpl<Conductor>
 		ConductorModelImpl conductorModelImpl) {
 		Object[] args = new Object[] { conductorModelImpl.getDni() };
 
-		finderCache.putResult(FINDER_PATH_COUNT_BY_BYDNI, args,
-			Long.valueOf(1), false);
-		finderCache.putResult(FINDER_PATH_FETCH_BY_BYDNI, args,
+		finderCache.putResult(FINDER_PATH_COUNT_BY_DNI, args, Long.valueOf(1),
+			false);
+		finderCache.putResult(FINDER_PATH_FETCH_BY_DNI, args,
 			conductorModelImpl, false);
 	}
 
@@ -1583,16 +2084,16 @@ public class ConductorPersistenceImpl extends BasePersistenceImpl<Conductor>
 		if (clearCurrent) {
 			Object[] args = new Object[] { conductorModelImpl.getDni() };
 
-			finderCache.removeResult(FINDER_PATH_COUNT_BY_BYDNI, args);
-			finderCache.removeResult(FINDER_PATH_FETCH_BY_BYDNI, args);
+			finderCache.removeResult(FINDER_PATH_COUNT_BY_DNI, args);
+			finderCache.removeResult(FINDER_PATH_FETCH_BY_DNI, args);
 		}
 
 		if ((conductorModelImpl.getColumnBitmask() &
-				FINDER_PATH_FETCH_BY_BYDNI.getColumnBitmask()) != 0) {
+				FINDER_PATH_FETCH_BY_DNI.getColumnBitmask()) != 0) {
 			Object[] args = new Object[] { conductorModelImpl.getOriginalDni() };
 
-			finderCache.removeResult(FINDER_PATH_COUNT_BY_BYDNI, args);
-			finderCache.removeResult(FINDER_PATH_FETCH_BY_BYDNI, args);
+			finderCache.removeResult(FINDER_PATH_COUNT_BY_DNI, args);
+			finderCache.removeResult(FINDER_PATH_FETCH_BY_DNI, args);
 		}
 	}
 
@@ -1781,6 +2282,12 @@ public class ConductorPersistenceImpl extends BasePersistenceImpl<Conductor>
 			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID_C,
 				args);
 
+			args = new Object[] { conductorModelImpl.getCocheId() };
+
+			finderCache.removeResult(FINDER_PATH_COUNT_BY_COCHEID, args);
+			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_COCHEID,
+				args);
+
 			finderCache.removeResult(FINDER_PATH_COUNT_ALL, FINDER_ARGS_EMPTY);
 			finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_ALL,
 				FINDER_ARGS_EMPTY);
@@ -1822,6 +2329,23 @@ public class ConductorPersistenceImpl extends BasePersistenceImpl<Conductor>
 
 				finderCache.removeResult(FINDER_PATH_COUNT_BY_UUID_C, args);
 				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_UUID_C,
+					args);
+			}
+
+			if ((conductorModelImpl.getColumnBitmask() &
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_COCHEID.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						conductorModelImpl.getOriginalCocheId()
+					};
+
+				finderCache.removeResult(FINDER_PATH_COUNT_BY_COCHEID, args);
+				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_COCHEID,
+					args);
+
+				args = new Object[] { conductorModelImpl.getCocheId() };
+
+				finderCache.removeResult(FINDER_PATH_COUNT_BY_COCHEID, args);
+				finderCache.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_COCHEID,
 					args);
 			}
 		}

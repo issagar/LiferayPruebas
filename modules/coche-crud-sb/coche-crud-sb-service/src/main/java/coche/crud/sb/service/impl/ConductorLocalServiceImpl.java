@@ -14,8 +14,11 @@
 
 package coche.crud.sb.service.impl;
 
+import java.util.List;
+
 import com.liferay.portal.kernel.exception.PortalException;
 
+import coche.crud.sb.exception.NoSuchConductorException;
 import coche.crud.sb.model.Coche;
 import coche.crud.sb.model.Conductor;
 import coche.crud.sb.model.impl.CocheImpl;
@@ -63,4 +66,42 @@ public class ConductorLocalServiceImpl extends ConductorLocalServiceBaseImpl {
 		
 		
 	}
+	
+	public Conductor findByDni(String dni) throws NoSuchConductorException {
+		return conductorPersistence.findByDni(dni);
+	}
+	
+	public Conductor fetchByDni(String dni) {
+		return conductorPersistence.fetchByDni(dni);
+	}
+	
+	public List<Conductor> findByCocheId(long CocheId){
+		return conductorPersistence.findByCocheId(CocheId);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

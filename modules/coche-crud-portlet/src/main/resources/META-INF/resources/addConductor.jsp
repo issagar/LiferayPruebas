@@ -1,13 +1,19 @@
 <%@page import="java.util.List"%>
 <%@page import="com.liferay.portal.kernel.util.ParamUtil"%>
 <%@page import="coche.crud.sb.model.Coche" %>
+<%@page import="coche.crud.sb.model.Conductor" %>
 <%@page import="coche.crud.sb.service.CocheLocalService" %>
+<%@page import="coche.crud.sb.service.ConductorLocalService" %>
 <%@ include file="./init.jsp" %>
 
 <%
 CocheLocalService cochesLocalService = (CocheLocalService)renderRequest.getAttribute("cocheLocalService");
 List<Coche> listadoCoches = cochesLocalService.getCoches(-1, -1);
+ConductorLocalService conductorLocalService = (ConductorLocalService)renderRequest.getAttribute("conductorLocalService");
+
+
 %>
+<liferay-ui:error key="dni-exist" message="Usuario ya registrado" />
 <liferay-portlet:renderURL varImpl="iteratorURL">
 	<liferay-portlet:param name="jspPage" value="/viewConductores.jsp"  />
 </liferay-portlet:renderURL>
@@ -16,9 +22,11 @@ List<Coche> listadoCoches = cochesLocalService.getCoches(-1, -1);
 		<aui:form action="${addConductorURL}" method="post" name="fm">
 		<aui:input type="text" name="nombre" label="Nombre" value="" localized="false">
 			<aui:validator name="maxLength">50</aui:validator>
+			<aui:validator name="required"></aui:validator>
 		</aui:input>
 		<aui:input type="text" name="apellido"  label="apellido" localized="true">
 			<aui:validator name="maxLength">50</aui:validator>
+			<aui:validator name="required"></aui:validator>
 		</aui:input>
 		<aui:input type="text" name="dni" label="dni">
 			<aui:validator name="maxLength">9</aui:validator>
@@ -48,8 +56,9 @@ List<Coche> listadoCoches = cochesLocalService.getCoches(-1, -1);
 			  }
 				
 </aui:validator>
-		</aui:input>
+			
 		
+		</aui:input>
 		<aui:select name="cocheSelect" id="cocheSelect" label="CocheId">
 		<aui:validator name="required"></aui:validator>
 		
