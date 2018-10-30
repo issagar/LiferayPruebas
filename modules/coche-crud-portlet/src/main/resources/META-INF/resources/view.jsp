@@ -10,12 +10,12 @@
 
 <h2><liferay-ui:message key="cochecrud.caption"/></h2>
 
-<liferay-portlet:renderURL var="addConductorURL">
-	<liferay-portlet:param name="jspPage" value="/addConductor.jsp" />
+<liferay-portlet:renderURL var="addEditConductorURL">
+	<liferay-portlet:param name="jspPage" value="/add-edit-conductor.jsp" />
 </liferay-portlet:renderURL>
 
-<liferay-portlet:renderURL var="addCocheURL">
-	<liferay-portlet:param name="jspPage" value="/addCoche.jsp" />
+<liferay-portlet:renderURL var="editAddCocheURL">
+	<liferay-portlet:param name="jspPage" value="/edit-add-Coche.jsp" />
 </liferay-portlet:renderURL>
 	
 <liferay-portlet:renderURL var="viewConductoresURL">
@@ -24,8 +24,8 @@
 
 
 <liferay-ui:icon-list>
-        <liferay-ui:icon image="status_online" message="Nuevo Conductor" url="${addConductorURL}"/>
-        <liferay-ui:icon image="add" message="Nuevo Coche" url="${addCocheURL}"/>
+        <liferay-ui:icon image="status_online" message="Nuevo Conductor" url="${addEditConductorURL}"/>
+        <liferay-ui:icon image="add" message="Nuevo Coche" url="${editAddCocheURL}"/>
         <liferay-ui:icon image="view_articles" message="Ver conductores" url="${viewConductoresURL}"/>
 </liferay-ui:icon-list>
 
@@ -57,11 +57,11 @@ OrderByComparator comparator= OrderByComparatorFactoryUtil.create("Coche", order
 		<liferay-ui:search-container-column-text name="Precio" property="precio"/>		
 		<liferay-ui:search-container-column-text name="actions">
 			<liferay-ui:icon-menu>
-				<liferay-portlet:renderURL var="editCocheURL">
-					<liferay-portlet:param name="mvcPath" value="/editCoche.jsp" />
+				<liferay-portlet:renderURL var="editAddCocheURL">
+					<liferay-portlet:param name="mvcPath" value="/edit-add-Coche.jsp" />
 					<liferay-portlet:param name="CocheId" value="<%=String.valueOf(coche.getCocheId()) %>" />
 				</liferay-portlet:renderURL>
-				<liferay-ui:icon image="edit" message="Editar" label="edit-coche" url="${editCocheURL }" />
+				<liferay-ui:icon image="edit" message="Editar" label="edit-coche" url="${editAddCocheURL }" />
 				<liferay-portlet:actionURL name="deleteCoche" var="deleteCocheURL">
 					<liferay-portlet:param name="CocheId" value="<%=String.valueOf(coche.getCocheId()) %>" />
 				</liferay-portlet:actionURL>

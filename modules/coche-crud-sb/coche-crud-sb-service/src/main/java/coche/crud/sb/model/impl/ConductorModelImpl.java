@@ -83,6 +83,8 @@ public class ConductorModelImpl extends BaseModelImpl<Conductor>
 			{ "nombre", Types.VARCHAR },
 			{ "apellido", Types.VARCHAR },
 			{ "dni", Types.VARCHAR },
+			{ "fechaNacimiento", Types.TIMESTAMP },
+			{ "fotoDniId", Types.BIGINT },
 			{ "cocheId", Types.BIGINT }
 		};
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP = new HashMap<String, Integer>();
@@ -98,10 +100,12 @@ public class ConductorModelImpl extends BaseModelImpl<Conductor>
 		TABLE_COLUMNS_MAP.put("nombre", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("apellido", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("dni", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("fechaNacimiento", Types.TIMESTAMP);
+		TABLE_COLUMNS_MAP.put("fotoDniId", Types.BIGINT);
 		TABLE_COLUMNS_MAP.put("cocheId", Types.BIGINT);
 	}
 
-	public static final String TABLE_SQL_CREATE = "create table Coches_Conductor (uuid_ VARCHAR(75) null,conductorId LONG not null primary key,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,nombre VARCHAR(75) null,apellido VARCHAR(75) null,dni VARCHAR(75) null,cocheId LONG)";
+	public static final String TABLE_SQL_CREATE = "create table Coches_Conductor (uuid_ VARCHAR(75) null,conductorId LONG not null primary key,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,nombre VARCHAR(75) null,apellido VARCHAR(75) null,dni VARCHAR(75) null,fechaNacimiento DATE null,fotoDniId LONG,cocheId LONG)";
 	public static final String TABLE_SQL_DROP = "drop table Coches_Conductor";
 	public static final String ORDER_BY_JPQL = " ORDER BY conductor.apellido ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY Coches_Conductor.apellido ASC";
@@ -146,6 +150,8 @@ public class ConductorModelImpl extends BaseModelImpl<Conductor>
 		model.setNombre(soapModel.getNombre());
 		model.setApellido(soapModel.getApellido());
 		model.setDni(soapModel.getDni());
+		model.setFechaNacimiento(soapModel.getFechaNacimiento());
+		model.setFotoDniId(soapModel.getFotoDniId());
 		model.setCocheId(soapModel.getCocheId());
 
 		return model;
@@ -221,6 +227,8 @@ public class ConductorModelImpl extends BaseModelImpl<Conductor>
 		attributes.put("nombre", getNombre());
 		attributes.put("apellido", getApellido());
 		attributes.put("dni", getDni());
+		attributes.put("fechaNacimiento", getFechaNacimiento());
+		attributes.put("fotoDniId", getFotoDniId());
 		attributes.put("cocheId", getCocheId());
 
 		attributes.put("entityCacheEnabled", isEntityCacheEnabled());
@@ -289,6 +297,18 @@ public class ConductorModelImpl extends BaseModelImpl<Conductor>
 
 		if (dni != null) {
 			setDni(dni);
+		}
+
+		Date fechaNacimiento = (Date)attributes.get("fechaNacimiento");
+
+		if (fechaNacimiento != null) {
+			setFechaNacimiento(fechaNacimiento);
+		}
+
+		Long fotoDniId = (Long)attributes.get("fotoDniId");
+
+		if (fotoDniId != null) {
+			setFotoDniId(fotoDniId);
 		}
 
 		Long cocheId = (Long)attributes.get("cocheId");
@@ -489,6 +509,28 @@ public class ConductorModelImpl extends BaseModelImpl<Conductor>
 
 	@JSON
 	@Override
+	public Date getFechaNacimiento() {
+		return _fechaNacimiento;
+	}
+
+	@Override
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		_fechaNacimiento = fechaNacimiento;
+	}
+
+	@JSON
+	@Override
+	public long getFotoDniId() {
+		return _fotoDniId;
+	}
+
+	@Override
+	public void setFotoDniId(long fotoDniId) {
+		_fotoDniId = fotoDniId;
+	}
+
+	@JSON
+	@Override
 	public long getCocheId() {
 		return _cocheId;
 	}
@@ -557,6 +599,8 @@ public class ConductorModelImpl extends BaseModelImpl<Conductor>
 		conductorImpl.setNombre(getNombre());
 		conductorImpl.setApellido(getApellido());
 		conductorImpl.setDni(getDni());
+		conductorImpl.setFechaNacimiento(getFechaNacimiento());
+		conductorImpl.setFotoDniId(getFotoDniId());
 		conductorImpl.setCocheId(getCocheId());
 
 		conductorImpl.resetOriginalValues();
@@ -703,6 +747,17 @@ public class ConductorModelImpl extends BaseModelImpl<Conductor>
 			conductorCacheModel.dni = null;
 		}
 
+		Date fechaNacimiento = getFechaNacimiento();
+
+		if (fechaNacimiento != null) {
+			conductorCacheModel.fechaNacimiento = fechaNacimiento.getTime();
+		}
+		else {
+			conductorCacheModel.fechaNacimiento = Long.MIN_VALUE;
+		}
+
+		conductorCacheModel.fotoDniId = getFotoDniId();
+
 		conductorCacheModel.cocheId = getCocheId();
 
 		return conductorCacheModel;
@@ -710,7 +765,7 @@ public class ConductorModelImpl extends BaseModelImpl<Conductor>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(23);
+		StringBundler sb = new StringBundler(27);
 
 		sb.append("{uuid=");
 		sb.append(getUuid());
@@ -732,6 +787,10 @@ public class ConductorModelImpl extends BaseModelImpl<Conductor>
 		sb.append(getApellido());
 		sb.append(", dni=");
 		sb.append(getDni());
+		sb.append(", fechaNacimiento=");
+		sb.append(getFechaNacimiento());
+		sb.append(", fotoDniId=");
+		sb.append(getFotoDniId());
 		sb.append(", cocheId=");
 		sb.append(getCocheId());
 		sb.append("}");
@@ -741,7 +800,7 @@ public class ConductorModelImpl extends BaseModelImpl<Conductor>
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(37);
+		StringBundler sb = new StringBundler(43);
 
 		sb.append("<model><model-name>");
 		sb.append("coche.crud.sb.model.Conductor");
@@ -788,6 +847,14 @@ public class ConductorModelImpl extends BaseModelImpl<Conductor>
 		sb.append(getDni());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>fechaNacimiento</column-name><column-value><![CDATA[");
+		sb.append(getFechaNacimiento());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>fotoDniId</column-name><column-value><![CDATA[");
+		sb.append(getFotoDniId());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>cocheId</column-name><column-value><![CDATA[");
 		sb.append(getCocheId());
 		sb.append("]]></column-value></column>");
@@ -816,6 +883,8 @@ public class ConductorModelImpl extends BaseModelImpl<Conductor>
 	private String _apellido;
 	private String _dni;
 	private String _originalDni;
+	private Date _fechaNacimiento;
+	private long _fotoDniId;
 	private long _cocheId;
 	private long _originalCocheId;
 	private boolean _setOriginalCocheId;

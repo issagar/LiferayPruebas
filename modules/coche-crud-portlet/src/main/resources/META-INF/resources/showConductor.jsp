@@ -36,6 +36,7 @@ OrderByComparator comparator= OrderByComparatorFactoryUtil.create("Conductor", o
 	<%
 	ConductorLocalService conductorLocalService = (ConductorLocalService)renderRequest.getAttribute("conductorLocalService");
 	List <Conductor> listaConductores= conductorLocalService.findByCocheId(cocheId);
+
 	searchContainer.setResults(listaConductores);
 	searchContainer.setTotal(listaConductores.size());
 	%>

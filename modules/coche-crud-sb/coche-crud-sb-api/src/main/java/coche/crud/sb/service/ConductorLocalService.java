@@ -269,6 +269,16 @@ public interface ConductorLocalService extends BaseLocalService,
 		java.lang.String userName, java.lang.String nombre,
 		java.lang.String apellido, java.lang.String dni, java.lang.Long cocheId);
 
+	public void addConductor(long companyId, long userId,
+		java.lang.String userName, java.lang.String nombre,
+		java.lang.String apellido, java.lang.String dni,
+		java.lang.Long fotoDniId, java.lang.Long cocheId);
+
+	public void addConductor(long companyId, long userId,
+		java.lang.String userName, java.lang.String nombre,
+		java.lang.String apellido, java.lang.String dni, long fotoDniId,
+		long cocheId);
+
 	public void updateConductor(long conductorId, java.lang.String nombre,
 		java.lang.String apellido, java.lang.Long cocheId)
 		throws PortalException;

@@ -22,5 +22,7 @@ create table Coches_Conductor (
 	nombre VARCHAR(75) null,
 	apellido VARCHAR(75) null,
 	dni VARCHAR(75) null,
+	fechaNacimiento DATE null,
+	fotoDniId LONG,
 	cocheId LONG
 );

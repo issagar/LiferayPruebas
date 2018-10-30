@@ -321,6 +321,24 @@ public class ConductorLocalServiceWrapper implements ConductorLocalService,
 	}
 
 	@Override
+	public void addConductor(long companyId, long userId,
+		java.lang.String userName, java.lang.String nombre,
+		java.lang.String apellido, java.lang.String dni,
+		java.lang.Long fotoDniId, java.lang.Long cocheId) {
+		_conductorLocalService.addConductor(companyId, userId, userName,
+			nombre, apellido, dni, fotoDniId, cocheId);
+	}
+
+	@Override
+	public void addConductor(long companyId, long userId,
+		java.lang.String userName, java.lang.String nombre,
+		java.lang.String apellido, java.lang.String dni, long fotoDniId,
+		long cocheId) {
+		_conductorLocalService.addConductor(companyId, userId, userName,
+			nombre, apellido, dni, fotoDniId, cocheId);
+	}
+
+	@Override
 	public void updateConductor(long conductorId, java.lang.String nombre,
 		java.lang.String apellido, java.lang.Long cocheId)
 		throws com.liferay.portal.kernel.exception.PortalException {

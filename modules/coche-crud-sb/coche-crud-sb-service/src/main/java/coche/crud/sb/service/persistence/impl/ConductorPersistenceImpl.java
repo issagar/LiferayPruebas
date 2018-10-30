@@ -2381,6 +2381,8 @@ public class ConductorPersistenceImpl extends BasePersistenceImpl<Conductor>
 		conductorImpl.setNombre(conductor.getNombre());
 		conductorImpl.setApellido(conductor.getApellido());
 		conductorImpl.setDni(conductor.getDni());
+		conductorImpl.setFechaNacimiento(conductor.getFechaNacimiento());
+		conductorImpl.setFotoDniId(conductor.getFotoDniId());
 		conductorImpl.setCocheId(conductor.getCocheId());
 
 		return conductorImpl;

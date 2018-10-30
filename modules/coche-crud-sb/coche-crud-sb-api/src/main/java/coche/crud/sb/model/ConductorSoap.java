@@ -44,6 +44,8 @@ public class ConductorSoap implements Serializable {
 		soapModel.setNombre(model.getNombre());
 		soapModel.setApellido(model.getApellido());
 		soapModel.setDni(model.getDni());
+		soapModel.setFechaNacimiento(model.getFechaNacimiento());
+		soapModel.setFotoDniId(model.getFotoDniId());
 		soapModel.setCocheId(model.getCocheId());
 
 		return soapModel;
@@ -177,6 +179,22 @@ public class ConductorSoap implements Serializable {
 		_dni = dni;
 	}
 
+	public Date getFechaNacimiento() {
+		return _fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		_fechaNacimiento = fechaNacimiento;
+	}
+
+	public long getFotoDniId() {
+		return _fotoDniId;
+	}
+
+	public void setFotoDniId(long fotoDniId) {
+		_fotoDniId = fotoDniId;
+	}
+
 	public long getCocheId() {
 		return _cocheId;
 	}
@@ -195,5 +213,7 @@ public class ConductorSoap implements Serializable {
 	private String _nombre;
 	private String _apellido;
 	private String _dni;
+	private Date _fechaNacimiento;
+	private long _fotoDniId;
 	private long _cocheId;
 }

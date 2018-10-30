@@ -303,6 +303,24 @@ public class ConductorLocalServiceUtil {
 			cocheId);
 	}
 
+	public static void addConductor(long companyId, long userId,
+		java.lang.String userName, java.lang.String nombre,
+		java.lang.String apellido, java.lang.String dni,
+		java.lang.Long fotoDniId, java.lang.Long cocheId) {
+		getService()
+			.addConductor(companyId, userId, userName, nombre, apellido, dni,
+			fotoDniId, cocheId);
+	}
+
+	public static void addConductor(long companyId, long userId,
+		java.lang.String userName, java.lang.String nombre,
+		java.lang.String apellido, java.lang.String dni, long fotoDniId,
+		long cocheId) {
+		getService()
+			.addConductor(companyId, userId, userName, nombre, apellido, dni,
+			fotoDniId, cocheId);
+	}
+
 	public static void updateConductor(long conductorId,
 		java.lang.String nombre, java.lang.String apellido,
 		java.lang.Long cocheId)

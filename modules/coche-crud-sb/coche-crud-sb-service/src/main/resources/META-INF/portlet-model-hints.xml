@@ -24,6 +24,8 @@
 		<field name="nombre" type="String" />
 		<field name="apellido" type="String" />
 		<field name="dni" type="String" />
+		<field name="fechaNacimiento" type="Date" />
+		<field name="fotoDniId" type="long" />
 		<field name="cocheId" type="long" />
 	</model>
 </model-hints>

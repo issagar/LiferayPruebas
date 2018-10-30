@@ -41,7 +41,7 @@ import coche.crud.sb.service.base.ConductorLocalServiceBaseImpl;
  */
 public class ConductorLocalServiceImpl extends ConductorLocalServiceBaseImpl {
 
-	public void addConductor(long companyId, long userId, String userName, String nombre, String apellido, String dni, Long cocheId) {
+	public void addConductor(long companyId, long userId, String userName, String nombre, String apellido, String dni,long fotoDniId, long cocheId) {
         final Conductor conductor = new ConductorImpl();
         conductor.setConductorId(counterLocalService.increment());
         conductor.setCompanyId(companyId);
@@ -50,6 +50,7 @@ public class ConductorLocalServiceImpl extends ConductorLocalServiceBaseImpl {
         conductor.setNombre(nombre);
         conductor.setApellido(apellido);
         conductor.setDni(dni);
+        conductor.setFotoDniId(fotoDniId);
         conductor.setCocheId(cocheId);
       
         addConductor(conductor);
@@ -77,6 +78,20 @@ public class ConductorLocalServiceImpl extends ConductorLocalServiceBaseImpl {
 	
 	public List<Conductor> findByCocheId(long CocheId){
 		return conductorPersistence.findByCocheId(CocheId);
+	}
+
+	@Override
+	public void addConductor(long companyId, long userId, String userName, String nombre, String apellido, String dni,
+			Long cocheId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addConductor(long companyId, long userId, String userName, String nombre, String apellido, String dni,
+			Long fotoDniId, Long cocheId) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

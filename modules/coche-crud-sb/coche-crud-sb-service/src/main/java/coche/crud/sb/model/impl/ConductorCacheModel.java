@@ -66,7 +66,7 @@ public class ConductorCacheModel implements CacheModel<Conductor>,
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(23);
+		StringBundler sb = new StringBundler(27);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -88,6 +88,10 @@ public class ConductorCacheModel implements CacheModel<Conductor>,
 		sb.append(apellido);
 		sb.append(", dni=");
 		sb.append(dni);
+		sb.append(", fechaNacimiento=");
+		sb.append(fechaNacimiento);
+		sb.append(", fotoDniId=");
+		sb.append(fotoDniId);
 		sb.append(", cocheId=");
 		sb.append(cocheId);
 		sb.append("}");
@@ -152,6 +156,14 @@ public class ConductorCacheModel implements CacheModel<Conductor>,
 			conductorImpl.setDni(dni);
 		}
 
+		if (fechaNacimiento == Long.MIN_VALUE) {
+			conductorImpl.setFechaNacimiento(null);
+		}
+		else {
+			conductorImpl.setFechaNacimiento(new Date(fechaNacimiento));
+		}
+
+		conductorImpl.setFotoDniId(fotoDniId);
 		conductorImpl.setCocheId(cocheId);
 
 		conductorImpl.resetOriginalValues();
@@ -174,6 +186,9 @@ public class ConductorCacheModel implements CacheModel<Conductor>,
 		nombre = objectInput.readUTF();
 		apellido = objectInput.readUTF();
 		dni = objectInput.readUTF();
+		fechaNacimiento = objectInput.readLong();
+
+		fotoDniId = objectInput.readLong();
 
 		cocheId = objectInput.readLong();
 	}
@@ -225,6 +240,10 @@ public class ConductorCacheModel implements CacheModel<Conductor>,
 			objectOutput.writeUTF(dni);
 		}
 
+		objectOutput.writeLong(fechaNacimiento);
+
+		objectOutput.writeLong(fotoDniId);
+
 		objectOutput.writeLong(cocheId);
 	}
 
@@ -238,5 +257,7 @@ public class ConductorCacheModel implements CacheModel<Conductor>,
 	public String nombre;
 	public String apellido;
 	public String dni;
+	public long fechaNacimiento;
+	public long fotoDniId;
 	public long cocheId;
 }

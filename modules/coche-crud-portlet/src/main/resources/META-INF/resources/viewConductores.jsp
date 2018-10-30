@@ -13,6 +13,25 @@
 
 <h2><liferay-ui:message key="cochecrud.caption"/></h2>
 
+<liferay-portlet:renderURL var="addEditConductorURL">
+	<liferay-portlet:param name="jspPage" value="/add-edit-conductor.jsp" />
+</liferay-portlet:renderURL>
+
+<liferay-portlet:renderURL var="editAddCocheURL">
+	<liferay-portlet:param name="jspPage" value="/edit-add-Coche.jsp" />
+</liferay-portlet:renderURL>
+	
+<liferay-portlet:renderURL var="viewConductoresURL">
+	<liferay-portlet:param name="jspPage" value="/viewConductores.jsp" />
+</liferay-portlet:renderURL>
+
+
+<liferay-ui:icon-list>
+        <liferay-ui:icon image="status_online" message="Nuevo Conductor" url="${addEditConductorURL}"/>
+        <liferay-ui:icon image="add" message="Nuevo Coche" url="${editAddCocheURL}"/>
+        <liferay-ui:icon image="view_articles" message="Ver conductores" url="${viewConductoresURL}"/>
+</liferay-ui:icon-list>
+
 
 <% 
 String orderByCol = ParamUtil.getString(request, "orderByCol", "apellido");
@@ -21,7 +40,7 @@ OrderByComparator comparator= OrderByComparatorFactoryUtil.create("Conductor", o
 %>
 	
 <liferay-portlet:renderURL varImpl="iteratorURL">
-	<liferay-portlet:param name="jspPage" value="/view.jsp"  />
+	<liferay-portlet:param name="jspPage" value="/viewConductores.jsp"  />
 </liferay-portlet:renderURL>
 
 <liferay-ui:search-container iteratorURL ="<%=iteratorURL%>" emptyResultsMessage="No hay conductores" delta="20" displayTerms="<%=new DisplayTerms(renderRequest) %>" orderByCol="<%=orderByCol %>" orderByType="<%=orderByType%>" orderByComparator="<%=comparator%>" >
@@ -52,17 +71,22 @@ OrderByComparator comparator= OrderByComparatorFactoryUtil.create("Conductor", o
 		<liferay-ui:search-container-column-text name="Vehiculo" value="<%=cocheMarca %>"/>		
 		<liferay-ui:search-container-column-text name="actions">
 			<liferay-ui:icon-menu>
-				<liferay-portlet:renderURL var="editConductorURL">
-					<liferay-portlet:param name="mvcPath" value="/editConductor.jsp" />
+				<liferay-portlet:renderURL var="addEditConductorURL">
+					<liferay-portlet:param name="mvcPath" value="/add-edit-conductor.jsp" />
 					<liferay-portlet:param name="conductorId" value="<%=String.valueOf(conductor.getConductorId()) %>" />
 				</liferay-portlet:renderURL>
-				<liferay-ui:icon image="edit" message="Editar" label="edit-conductor" url="${editConductorURL }" />
+				<liferay-ui:icon image="edit" message="Editar" label="edit-conductor" url="${addEditConductorURL }" />
 				<liferay-portlet:actionURL name="deleteConductor" var="deleteConductorURL">
 					<liferay-portlet:param name="conductorId" value="<%=String.valueOf(conductor.getConductorId()) %>" />
 				</liferay-portlet:actionURL>
 				<liferay-ui:icon image="delete" message="Eliminar" label="delete-conductor" url="${deleteConductorURL}" />
-			</liferay-ui:icon-menu>
 			
+			</liferay-ui:icon-menu>
+				<liferay-portlet:renderURL var="viewFichaURL">
+					<liferay-portlet:param name="mvcPath" value="/viewFicha.jsp" />
+					<liferay-portlet:param name="conductorId" value="<%=String.valueOf(conductor.getConductorId()) %>" />
+			</liferay-portlet:renderURL>
+			<liferay-ui:icon image="search" message="Ver ficha" label="ficha" url="${viewFichaURL}" />
 		</liferay-ui:search-container-column-text>
 	</liferay-ui:search-container-row>
 	<liferay-ui:search-iterator/>

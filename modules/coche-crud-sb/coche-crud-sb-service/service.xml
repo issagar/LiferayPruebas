@@ -55,6 +55,8 @@
 		<column name="nombre" type="String" />
 		<column name="apellido" type="String" />
 		<column name="dni" type="String" />
+		<column name="fechaNacimiento" type="Date" />
+        <column name="fotoDniId" type="long"></column>
 		<column name="cocheId" type="long"  />
 		
 

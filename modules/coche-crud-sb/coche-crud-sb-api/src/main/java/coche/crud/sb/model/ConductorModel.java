@@ -239,6 +239,34 @@ public interface ConductorModel extends BaseModel<Conductor>, ShardedModel,
 	public void setDni(String dni);
 
 	/**
+	 * Returns the fecha nacimiento of this conductor.
+	 *
+	 * @return the fecha nacimiento of this conductor
+	 */
+	public Date getFechaNacimiento();
+
+	/**
+	 * Sets the fecha nacimiento of this conductor.
+	 *
+	 * @param fechaNacimiento the fecha nacimiento of this conductor
+	 */
+	public void setFechaNacimiento(Date fechaNacimiento);
+
+	/**
+	 * Returns the foto dni ID of this conductor.
+	 *
+	 * @return the foto dni ID of this conductor
+	 */
+	public long getFotoDniId();
+
+	/**
+	 * Sets the foto dni ID of this conductor.
+	 *
+	 * @param fotoDniId the foto dni ID of this conductor
+	 */
+	public void setFotoDniId(long fotoDniId);
+
+	/**
 	 * Returns the coche ID of this conductor.
 	 *
 	 * @return the coche ID of this conductor

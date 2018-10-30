@@ -69,6 +69,8 @@ public class ConductorWrapper implements Conductor, ModelWrapper<Conductor> {
 		attributes.put("nombre", getNombre());
 		attributes.put("apellido", getApellido());
 		attributes.put("dni", getDni());
+		attributes.put("fechaNacimiento", getFechaNacimiento());
+		attributes.put("fotoDniId", getFotoDniId());
 		attributes.put("cocheId", getCocheId());
 
 		return attributes;
@@ -134,6 +136,18 @@ public class ConductorWrapper implements Conductor, ModelWrapper<Conductor> {
 
 		if (dni != null) {
 			setDni(dni);
+		}
+
+		Date fechaNacimiento = (Date)attributes.get("fechaNacimiento");
+
+		if (fechaNacimiento != null) {
+			setFechaNacimiento(fechaNacimiento);
+		}
+
+		Long fotoDniId = (Long)attributes.get("fotoDniId");
+
+		if (fotoDniId != null) {
+			setFotoDniId(fotoDniId);
 		}
 
 		Long cocheId = (Long)attributes.get("cocheId");
@@ -279,6 +293,16 @@ public class ConductorWrapper implements Conductor, ModelWrapper<Conductor> {
 	}
 
 	/**
+	* Returns the fecha nacimiento of this conductor.
+	*
+	* @return the fecha nacimiento of this conductor
+	*/
+	@Override
+	public Date getFechaNacimiento() {
+		return _conductor.getFechaNacimiento();
+	}
+
+	/**
 	* Returns the modified date of this conductor.
 	*
 	* @return the modified date of this conductor
@@ -316,6 +340,16 @@ public class ConductorWrapper implements Conductor, ModelWrapper<Conductor> {
 	@Override
 	public long getConductorId() {
 		return _conductor.getConductorId();
+	}
+
+	/**
+	* Returns the foto dni ID of this conductor.
+	*
+	* @return the foto dni ID of this conductor
+	*/
+	@Override
+	public long getFotoDniId() {
+		return _conductor.getFotoDniId();
 	}
 
 	/**
@@ -422,6 +456,26 @@ public class ConductorWrapper implements Conductor, ModelWrapper<Conductor> {
 	@Override
 	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
 		_conductor.setExpandoBridgeAttributes(serviceContext);
+	}
+
+	/**
+	* Sets the fecha nacimiento of this conductor.
+	*
+	* @param fechaNacimiento the fecha nacimiento of this conductor
+	*/
+	@Override
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		_conductor.setFechaNacimiento(fechaNacimiento);
+	}
+
+	/**
+	* Sets the foto dni ID of this conductor.
+	*
+	* @param fotoDniId the foto dni ID of this conductor
+	*/
+	@Override
+	public void setFotoDniId(long fotoDniId) {
+		_conductor.setFotoDniId(fotoDniId);
 	}
 
 	/**
