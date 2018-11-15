@@ -1,0 +1,4 @@
+Bundle-Name: plantilla-navarra
+Bundle-SymbolicName: plantilla.navarra
+Bundle-Version: 1.0.0
+Export-Package: plantilla.navarra.constants}

@@ -1,0 +1,294 @@
+#collapseExample{
+	background-color:#cb4848 !important;
+	position: relative;
+    z-index: 5;
+}
+.area_lenguajes{
+background-color:#cb4848 !important;
+padding:15px;
+color: #ffffff;
+line-height: 200%;
+}
+
+.area_lenguajes a:link{
+color: #ffffff;
+}
+header{
+	color: #ffffff;
+}
+.tarjeta{
+
+	font-family: "Roboto Condensed", sans-serif;
+	font-size:18px;
+        font-weight:200;
+        line-height:26px;
+	background-color:#cb4848 !important;
+	border-bottom:solid 1px #ffffff;
+	padding:10px;
+	
+}
+
+.tituloMenu{
+	font-family: "Roboto", sans-serif;
+	font-size:33px;
+        line-height:80px;
+	color:#ffffff;
+	border-bottom:solid 1px #ffffff;
+	padding:10px;
+}
+#heading{
+	background-color:#bf0404 ;
+    height:60px;
+	width: 100%;
+}
+.tarjeta a{
+	text-decoration: none;
+	color:#ffffff;
+
+}
+
+.a btn-primary{
+	background-color: transparent !important;
+}
+
+a:active{
+	text-decoration: none;
+	color:#ffffff;
+}
+a:visited{
+text-decoration: none;
+	color:#ffffff;
+}
+ 
+a:link { 
+text-decoration:none; 
+    color: #ffffff;
+} 
+a:hover{
+text-decoration: none;
+	color:#ffffff;
+}
+
+.menuIcon{
+	width: 30px;
+	height: 30px;
+}
+
+.enlacesMenu{
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	color: #ffffff;
+}
+.navarraTxt{
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	color: #ffffff;
+}
+.teAtendemos{
+   margin-left:33%;
+	
+}
+.idiomas{
+   	width:100px;
+   	margin-top: -30px;
+   	margin-left:auto;
+    border-left: solid 2px #ffffff;
+   	border-right: solid 2px #ffffff;
+	padding-left:5px;
+}
+.tarjetaIdioma{
+	background-color:#cb4848 ;
+
+}
+
+
+.menu{
+	padding-top: 20px;
+	margin-left:10%;
+}
+.navarra{
+
+margin-left:48%;
+padding-top: 20px;
+    
+}
+
+.busqueda{
+	background-color: #E6E6E4;
+	width: 100%;
+	height: 130px;
+}
+.form-control{
+
+width:100% !important;
+height:60px !important;
+margin-top:3%;
+}
+
+
+.tituloServicios{
+	font-family:"Roboto Condensed, sans-serif";
+	font-size:24px;
+	font-weight: bold;
+}
+.tituloServicioGeneral{
+	font-family:"Roboto Condensed, sans-serif";
+	font-size:30px;
+
+	font-weight: 300;
+}
+.bloque{
+border-top:solid 1px #E6E6E4;
+border-bottom:solid 1px #E6E6E4;
+padding:15px;
+height: 170px;
+}
+
+.bloqueDestacado{
+border-top:solid 1px #E6E6E4;
+border-bottom:solid 1px #E6E6E4;
+padding:15px;
+height: 170px;
+background-color: #E6E6E4;
+}
+
+
+
+.destacado .tituloServicios{
+	color: #bf0404; 
+}
+
+
+
+.bloqueActualidad{
+background-color:#E6E6E4;
+height:250px;
+
+}
+
+.glyphicon-play{
+color:#bf0404  ;
+}
+.descripcionActualidad{
+color: black;
+font-family:"Roboto Condensed, sans-serif";
+font-size:18px;
+}
+.descripcionActualidad:hover{
+color: black;
+text-decoration:underline;
+}
+.descripcionFrase{
+width:90%;
+margin-left:45px;
+border-top:solid 1px grey;
+border-bottom:solid 1px grey;
+height:70px;
+padding-top:25px;
+
+
+}
+
+.tituloActualidad{
+	font-family:"Roboto Condensed, sans-serif";
+	font-size:30px;
+	margin-left:5%;
+	font-weight: 300;
+}
+
+
+
+.tituloNoticia{
+	font-family: "Roboto Condensed", sans-serif;
+color:black !important;
+font-size:22px;
+font-weight:700 !important;
+
+
+
+}
+.tituloNoticia:hover{
+color:black;
+text-decoration:underline;
+
+}
+
+.descripcionNoticia{
+	font-family: "Roboto Condensed", sans-serif;
+font-weight:300;
+
+
+}
+.tituloDescripcion{
+	font-family: "Roboto Condensed", sans-serif;
+font-size:22px;
+width:370px;
+height:100px;
+padding-top:12px;
+text-align:center;
+background-color: #E6E6E4;
+
+}
+
+
+.tituloFooter{
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size:13px;
+color:white;
+	font-weight: 700;
+}
+.tituloFooter a:link{
+	color:white;
+}
+.tituloFooter a:hover{
+	color:white;
+text-decoration:underline;
+}
+
+.subtitulo{
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size:13px;
+}
+.subtitulo a:link{
+color:white;
+}
+
+#Columnas{
+border-top:solid 2px grey;
+margin-left:80px;
+padding-top:20px;
+}
+
+
+
+.footer{
+background-color:#404040;
+padding:80px;
+
+}
+
+.footer ul{
+list-style-type: none;
+
+}
+.footer li{
+float: left;
+margin:5px;
+color:white;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size:13px;
+}
+.footer a li:hover{
+text-decoration:underline;
+}
+
+.menuTop{
+
+margin-left:90px;
+border-top:solid 1px grey;
+padding:20px;
+
+}
+
+
+

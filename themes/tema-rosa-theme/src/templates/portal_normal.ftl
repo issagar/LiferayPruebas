@@ -12,6 +12,7 @@
 	<@liferay_util["include"] page=top_head_include />
 </head>
 
+
 <body class="${css_class}" style="background-color:${chooseColor}">
 
 <@liferay_ui["quick-access"] contentId="#main-content" />
@@ -34,26 +35,24 @@
 
 	<section id="content">
 		<h1 class="hide-accessible">Pagina de prueba</h1>
-<@liferay.navigation_menu instance_id="footer_navigation_menu"/>
-		<nav id="breadcrumbs">
-			<@liferay.breadcrumbs />
-		</nav>
-		<#if isShowNavigation>
-			<@liferay_portlet["runtime"] instanceId="navigationIsa" portletName="com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_vDbsM2gmyOzl" />
-		</#if>
-
-
-		<#if selectable>
-			<@liferay_util["include"] page=content_include />
-		<#else>
-			${portletDisplay.recycle()}
-
-			${portletDisplay.setTitle(the_title)}
-
-			<@liferay_theme["wrap-portlet"] page="portlet.ftl">
+			<@liferay.navigation_menu instance_id="footer_navigation_menu"/>
+			<nav id="breadcrumbs">
+				<@liferay.breadcrumbs />
+			</nav>
+			<#if isShowNavigation>
+				<@liferay_portlet["runtime"] instanceId="navigationIsa" portletName="com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet_INSTANCE_vDbsM2gmyOzl" />
+			</#if>
+			<#if selectable>
 				<@liferay_util["include"] page=content_include />
-			</@>
-		</#if>
+			<#else>
+				${portletDisplay.recycle()}
+	<div class ="titulo">
+				${portletDisplay.setTitle(the_title)}
+	</div>
+				<@liferay_theme["wrap-portlet"] page="portlet.ftl">
+					<@liferay_util["include"] page=content_include />
+				</@>
+			</#if>
 	</section>
 
 	<footer id="footer" role="contentinfo">

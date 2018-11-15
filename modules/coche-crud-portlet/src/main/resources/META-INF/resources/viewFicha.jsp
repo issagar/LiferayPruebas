@@ -4,8 +4,6 @@
 <%@page import="coche.crud.sb.model.Coche"%>
 <%@page import="java.util.List"%>
 <%@page import="com.liferay.portal.kernel.dao.search.DisplayTerms"%>
-<%@page import="com.liferay.portal.kernel.util.OrderByComparatorFactoryUtil"%>
-<%@page import="com.liferay.portal.kernel.util.OrderByComparator"%>
 <%@page import="com.liferay.portal.kernel.util.ParamUtil"%>
 <%@page import="coche.crud.sb.model.Conductor"%>
 <%@page import="coche.crud.sb.model.Coche"%>
@@ -81,7 +79,6 @@ if(idImg == 0){
                             </div>
                         </div>
 
-
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
                                                 <label style="font-weight:bold;">Nombre</label>
@@ -130,10 +127,6 @@ if(idImg == 0){
                                             </div>
                                         </div>
                                         <hr />    
-                              
-                            
-                     
-
 
                     </div>
 
